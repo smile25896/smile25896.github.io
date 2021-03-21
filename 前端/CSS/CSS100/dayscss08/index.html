@@ -228,7 +228,6 @@
 <p>Metaballs是一個我覺得很神奇的題目，也因為覺得有趣稍微做了點變化和調整，成品和當初的題目其實不太一樣，其實不太知道我自己改版過後的版本還能不能叫Metaballs。<br>以下只重點紀錄這次新學到的語法或用法。</p>
 <h1 id="學習重點"><a href="#學習重點" class="headerlink" title="學習重點"></a>學習重點</h1><ol>
 <li>Slim</li>
-<li><code>animation</code> 和 <code>keyframes</code> 的用法製作動畫</li>
 <li><code>filter: contrast()</code> 和 <code>filter: blur()</code></li>
 </ol>
 <p>Metaballs中文叫做元球或變形，指兩個球體靠在一起時，會有下圖變形的情況。<br><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Metaballs.gif">（圖片來源：維基百科）</p>
@@ -238,81 +237,6 @@
 <p>會轉成以下html</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item-1&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item-2&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item-3&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item-4&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>把原本的div省略直接寫class名稱，<br>很多重複的元素可以直接跑for迴圈非常方便，目前只用到for這個功能，<br>以後有接觸到新功能在介紹。</p>
-<h2 id="animation-和-keyframes"><a href="#animation-和-keyframes" class="headerlink" title="animation 和 keyframes"></a>animation 和 keyframes</h2><p>keyframes為關鍵影格，可以設定在某個時間點的css狀態。</p>
-<p>例如下面這個範例，則設定開頭時rotate為0deg，結束時rotate為90deg。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rotate &#123;</span><br><span class="line">  <span class="comment">/* 開頭 */</span></span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* 結尾 */</span></span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">90deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>也可以依據時間的百分比設定，如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rotate2 &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接著只要將關鍵影格套入到css的animation屬性中</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">background</span>:red;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">animation-name</span>:rotate;</span><br><span class="line">  <span class="attribute">animation-duration</span>:<span class="number">2s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/6jb3Thg.gif"></p>
-<p>animation有相當多的屬性可以調整</p>
-<table>
-<thead>
-<tr>
-<th>屬性名稱</th>
-<th>說明</th>
-<th>預設值</th>
-<th>其他設定值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>animation-name</td>
-<td>關鍵影格的名稱。</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>animation-duration</td>
-<td>動畫播放一次週期的時間。</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>animation-timing-function</td>
-<td>動畫的加速曲線。</td>
-<td>ease</td>
-<td>linear、ease-in…</td>
-</tr>
-<tr>
-<td>animation-delay</td>
-<td>動畫延遲開始的時間。</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>animation-iteration-count</td>
-<td>動畫播放的次數</td>
-<td>1</td>
-<td>infinite：無限</td>
-</tr>
-<tr>
-<td>animation-direction</td>
-<td>動畫播放的方向</td>
-<td>normal</td>
-<td></td>
-</tr>
-<tr>
-<td>animation-fill-mode</td>
-<td>動畫播放前後的模式</td>
-<td>none</td>
-<td></td>
-</tr>
-<tr>
-<td>animation-play-state</td>
-<td>動畫播放的狀態</td>
-<td>running</td>
-<td>paused</td>
-</tr>
-</tbody></table>
-<p>完整說明可以參考<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Animations/Using_CSS_animations" >這裡<i class="fas fa-external-link-alt"></i></a></p>
-<p>也能寫成縮寫：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">animation</span>:name duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;</span><br></pre></td></tr></table></figure>
-
-<br/>
-
 <h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>filter是css的濾鏡效果，讓Metaballs能有相黏的效果，filter是最重要的一個環節，此練習會用到<code>filter: contrast()</code>和<code>filter: blur();</code></p>
 <p><strong>filter: blur()</strong><br>高斯模糊，括號李可以設定要模糊的CSS的長度。</p>
 <p><strong>filter: contrast()</strong><br>對比度，0就是完全沒對比（會變一片灰色）、100%表示顏色不變、超過100%對比則會越大。</p>
@@ -462,7 +386,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Metaballs-Demo"><span class="nav-number">1.</span> <span class="nav-text">Metaballs Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">學習重點</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Slim"><span class="nav-number">2.1.</span> <span class="nav-text">Slim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#animation-%E5%92%8C-keyframes"><span class="nav-number">2.2.</span> <span class="nav-text">animation 和 keyframes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter"><span class="nav-number">2.3.</span> <span class="nav-text">filter</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Metaballs-Demo"><span class="nav-number">1.</span> <span class="nav-text">Metaballs Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">學習重點</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Slim"><span class="nav-number">2.1.</span> <span class="nav-text">Slim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter"><span class="nav-number">2.2.</span> <span class="nav-text">filter</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>

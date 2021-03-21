@@ -320,6 +320,7 @@
 <p>如果要讓「三」變成「X」時有快到慢的效果，而反過來當「X」變回「三」時則有慢到快的效果時，最簡單的方式是設定<code>ease-out</code>（漸出）與<code>ease-in</code>（漸入）。</p>
 <p>animation-timing-function完整的說明及參數可以參考<a class="link"   target="_blank" rel="noopener" href="https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp" >這裡<i class="fas fa-external-link-alt"></i></a></p>
 <h3 id="cubic-bezier"><a href="#cubic-bezier" class="headerlink" title="cubic-bezier"></a>cubic-bezier</h3><p>若希望動畫的速度變化比<code>ease-out</code>、<code>ease-in</code>更強烈的話，就可以透過<code>cubic-bezier</code>手動設定動畫的加速度函式。<br>animation-timing-function預設的幾種加速函式畫成貝茲曲線圖會是這個樣子：<br><img src="/images/posts/dayscss02/01.png"></p>
+<p>貝茲曲線有兩個控制點，調整控制點的位置則可以讓我們畫出曲線<br><code>cubic-bezier(x1, y1, x2, y2)</code>：四個參數分別是(控制點1的x軸, 控制點1的y軸, 控制點2的x軸, 控制點2的y軸)<br>若不清楚控制點是什麼的人，建議可以到<a class="link"   target="_blank" rel="noopener" href="https://cubic-bezier.com/" >cubic-bezier.com<i class="fas fa-external-link-alt"></i></a>上玩玩看會更了解。</p>
 
         </div>
 

@@ -48,6 +48,10 @@
 }
 .home-content-container .home-article-list .home-article-item .content {
   flex: 1;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .home-content-container .home-article-list .home-article-item .top-icon {
   position: absolute;
@@ -117,11 +121,13 @@ keep-mobile()
   box-sizing: border-box;
   color: var(--primary-color);
   text-align: center;
+  transform: scale(0);
 }
 .home-content-container .home-article-list .home-article-item .read-more i {
   color: $primary-color;
 }
 .home-content-container .home-article-list .home-article-item:hover .read-more {
+  transform: scale(1);
   color: #fff;
   background: var(--primary-background-color);
 }
