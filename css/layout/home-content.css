@@ -81,7 +81,7 @@ keep-mobile()
 .home-content-container .home-article-list .home-article-item .home-article-meta-info-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   font-size: 0.92rem;
   color: var(--third-text-color);
 }
@@ -89,6 +89,7 @@ keep-mobile()
   letter-spacing: 0.5px;
 }
 .home-content-container .home-article-list .home-article-item .home-article-meta-info-container .home-article-meta-info span {
+  display: inline-block;
   margin-right: 10px;
 }
 .home-content-container .home-article-list .home-article-item .home-article-meta-info-container .home-article-meta-info span:last-child {
@@ -97,6 +98,9 @@ keep-mobile()
 .home-content-container .home-article-list .home-article-item .home-article-meta-info-container .home-article-meta-info span ul,
 .home-content-container .home-article-list .home-article-item .home-article-meta-info-container .home-article-meta-info span li {
   display: inline;
+}
+.home-content-container .home-article-list .home-article-item .home-article-meta-info-container .read-more {
+  min-width: 68px;
 }
 .home-content-container .home-article-list .home-article-item .home-article-meta-info-container hr {
   border: none;
@@ -110,27 +114,4 @@ keep-mobile()
 }
 .home-content-container .home-article-list .home-article-item .home-article-meta-info-container a:hover {
   color: var(--primary-color);
-}
-.home-content-container .home-article-list .home-article-item .read-more {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  cursor: pointer;
-  padding: 5px;
-  box-sizing: border-box;
-  color: var(--primary-color);
-  text-align: center;
-  transform: scale(0);
-}
-.home-content-container .home-article-list .home-article-item .read-more i {
-  color: $primary-color;
-}
-.home-content-container .home-article-list .home-article-item:hover .read-more {
-  transform: scale(1);
-  color: #fff;
-  background: var(--primary-background-color);
-}
-.home-content-container .home-article-list .home-article-item:hover .read-more i {
-  color: #fff;
 }
