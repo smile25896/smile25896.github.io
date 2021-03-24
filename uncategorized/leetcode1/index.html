@@ -9,7 +9,7 @@
     
     <title>
         
-            [CSS100] Day 03 The Pyramid |
+            [LeetCode] 1. Two Sum 刷題筆記 |
         
         Cathy P
     </title>
@@ -147,7 +147,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">[CSS100] Day 03 The Pyramid</span>
+            <span class="title-hover-animation">[LeetCode] 1. Two Sum 刷題筆記</span>
         </div>
 
         
@@ -163,27 +163,8 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-12 22:30:11
+        <i class="fas fa-edit"></i>&nbsp;2021-03-23 23:47:20
     </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/">CSS</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/CSS100/">CSS100</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -191,11 +172,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/CSS/">CSS</a>&nbsp;
+                        <a href="/tags/Javascript/">Javascript</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/CSS100/">CSS100</a>&nbsp;
+                        | <a href="/tags/LeetCode/">LeetCode</a>&nbsp;
                     </li>
                 
             </ul>
@@ -218,39 +199,22 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="The-Pyramid-Demo"><a href="#The-Pyramid-Demo" class="headerlink" title="The Pyramid Demo"></a>The Pyramid Demo</h1><p class="codepen" data-height="482" data-theme-id="dark" data-default-tab="css,result" data-user="smile25896" data-slug-hash="PrJKXp" style="height: 482px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="100DaysCss #03">
-  <span>See the Pen <a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/PrJKXp" >
-  100DaysCss #03<i class="fas fa-external-link-alt"></i></a> by Cathy (<a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896" >@smile25896<i class="fas fa-external-link-alt"></i></a>)
-  on <a class="link"   target="_blank" rel="noopener" href="https://codepen.io" >CodePen<i class="fas fa-external-link-alt"></i></a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+            <h1 id="LeetCode-1-Two-Sum-刷題筆記"><a href="#LeetCode-1-Two-Sum-刷題筆記" class="headerlink" title="[LeetCode] 1. Two Sum 刷題筆記"></a>[LeetCode] 1. Two Sum 刷題筆記</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>菜鳥的刷題記錄，前端工作兩年後發現很多程式基礎（演算法、資料結構等等）都忘得差不多了，其實當初學生時期的底子也不太紮實。手很生，決定開始上LeedCode刷題。<br>基本上是希望是一個紀錄菜鳥成長的過程的系列文。</p>
+<h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h2><p>LeetCode題目連結：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum/" >https://leetcode.com/problems/two-sum/<i class="fas fa-external-link-alt"></i></a></p>
+<p>難度等級：Easy</p>
+<p>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.<br>You may assume that each input would have exactly one solution, and you may not use the same element twice.<br>You can return the answer in any order.</p>
+<p><strong>翻譯：</strong><br>給一個nums(int array)和target(int)，找出nums陣列中的兩個數值加起來會等於target，回傳這兩個元素的位置。<br>一定會有唯一解，不會使用相同的元素兩次。</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [2,7,11,15], target &#x3D; 9</span><br><span class="line">Output: [0,1]</span><br><span class="line">Output: Because nums[0] + nums[1] &#x3D;&#x3D; 9, we return [0, 1].</span><br></pre></td></tr></table></figure>
 
-<p>這次的金字塔和金字塔的陰影的三角形不是以往學到的透過border畫出來的，而是透過<code>clip-path</code>這個屬性畫成的，透過這個屬性不只三角形，各式各樣的圖形感覺都能畫得出來！<br>再搭配Day2學到的動畫，改變一下天空、金字塔的顏色以及太陽和陰影的角度，就能夠完成。另外雖然範例沒有，但我還加了黃昏時候的橘黃色感覺。</p>
-<h1 id="學習重點"><a href="#學習重點" class="headerlink" title="學習重點"></a>學習重點</h1><ol>
-<li><code>clip-path</code></li>
-</ol>
-<h2 id="clip-path"><a href="#clip-path" class="headerlink" title="clip-path"></a>clip-path</h2><p><code>clip-path</code>是利用剪裁遮罩，建立可視區域，可視區域外的地方皆被隱藏，透過<code>clip-path</code>產生的剪裁遮罩來產生各式各樣圖形。<br><code>clip-path</code>有非常多種用法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">circle</span>();    // 圓型</span><br><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">ellipse</span>();   // 橢圓型</span><br><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>();   // 多邊形</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [3,2,4], target &#x3D; 6</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure>
 
-<p>其中三角形就是使用<code>polygon()</code>，參數分別對應到多邊形點的xy軸，所以幾個參數就代表有幾個點。</p>
-<p>直角三角形：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">0</span> <span class="number">0</span>, <span class="number">0%</span> <span class="number">100%</span>, <span class="number">100%</span> <span class="number">100%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/01.png" width="100px" style="box-shadow: unset;">
-
-<p>或是任意調整點的位置：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">50%</span> <span class="number">0%</span>, <span class="number">0</span> <span class="number">100%</span>, <span class="number">94%</span> <span class="number">63%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/02.png" width="100px" style="box-shadow: unset;">
-
-<p>除了三角形也可以畫更多邊形，像是八邊形：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">50%</span> <span class="number">0%</span>, <span class="number">100%</span> <span class="number">38%</span>, <span class="number">82%</span> <span class="number">100%</span>, <span class="number">18%</span> <span class="number">100%</span>, <span class="number">0%</span> <span class="number">38%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/03.png" width="100px" style="box-shadow: unset;">
-
-
-<p>還可以做一些其他的形狀，像是：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">20%</span> <span class="number">0%</span>, <span class="number">0%</span> <span class="number">20%</span>, <span class="number">30%</span> <span class="number">50%</span>, <span class="number">0%</span> <span class="number">80%</span>, <span class="number">20%</span> <span class="number">100%</span>, <span class="number">50%</span> <span class="number">70%</span>, <span class="number">80%</span> <span class="number">100%</span>, <span class="number">100%</span> <span class="number">80%</span>, <span class="number">70%</span> <span class="number">50%</span>, <span class="number">100%</span> <span class="number">20%</span>, <span class="number">80%</span> <span class="number">0%</span>, <span class="number">50%</span> <span class="number">30%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/04.png" width="100px" style="box-shadow: unset;">
-
-<p>有興趣的話可以到<a class="link"   target="_blank" rel="noopener" href="https://bennettfeely.com/clippy/" >CSS clip-path maker<i class="fas fa-external-link-alt"></i></a>上操作看看。</p>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [3,3], target &#x3D; 6</span><br><span class="line">Output: [0,1]</span><br></pre></td></tr></table></figure>
+<h2 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j=i+<span class="number">1</span>; j&lt;nums.length; j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(nums[j]+nums[i] === target)&#123;</span><br><span class="line">        <span class="keyword">return</span> [i, j]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>很單純的跑兩個迴圈，第二個迴圈只從第一個數之後的數開始跑，若兩數相加等於零即為答案。<br>LeetCode的第一題，單純解出答案不要求效率的話，基本上沒有什麼難度，算是很溫和的試水溫題。</p>
+<h2 id="成績"><a href="#成績" class="headerlink" title="成績"></a>成績</h2><p>Runtime: 76 ms (排名：83.53%)<br>Memory Usage: 38.7 MB (排名：73.70%)</p>
 
         </div>
 
@@ -262,33 +226,18 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss02/"
+                           href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss09/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 02 Menu Icon</span>
+                                <span class="post-nav-title-item">[CSS100] Day 09 Weather</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                         </a>
                     </div>
                 
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss04/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 04 Loading</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
                 
             </div>
         
@@ -396,7 +345,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Pyramid-Demo"><span class="nav-number">1.</span> <span class="nav-text">The Pyramid Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">學習重點</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#clip-path"><span class="nav-number">2.1.</span> <span class="nav-text">clip-path</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode-1-Two-Sum-%E5%88%B7%E9%A1%8C%E7%AD%86%E8%A8%98"><span class="nav-number">1.</span> <span class="nav-text">[LeetCode] 1. Two Sum 刷題筆記</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.2.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">解題過程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E7%B8%BE"><span class="nav-number">1.4.</span> <span class="nav-text">成績</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>

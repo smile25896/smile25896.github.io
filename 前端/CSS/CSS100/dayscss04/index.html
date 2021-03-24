@@ -9,7 +9,7 @@
     
     <title>
         
-            [CSS100] Day 03 The Pyramid |
+            [CSS100] Day 04 Loading |
         
         Cathy P
     </title>
@@ -147,7 +147,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">[CSS100] Day 03 The Pyramid</span>
+            <span class="title-hover-animation">[CSS100] Day 04 Loading</span>
         </div>
 
         
@@ -163,7 +163,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-12 22:30:11
+        <i class="fas fa-edit"></i>&nbsp;2021-03-13 21:20:17
     </span>
     
         <span class="article-categories article-meta-item">
@@ -218,39 +218,39 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="The-Pyramid-Demo"><a href="#The-Pyramid-Demo" class="headerlink" title="The Pyramid Demo"></a>The Pyramid Demo</h1><p class="codepen" data-height="482" data-theme-id="dark" data-default-tab="css,result" data-user="smile25896" data-slug-hash="PrJKXp" style="height: 482px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="100DaysCss #03">
-  <span>See the Pen <a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/PrJKXp" >
-  100DaysCss #03<i class="fas fa-external-link-alt"></i></a> by Cathy (<a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896" >@smile25896<i class="fas fa-external-link-alt"></i></a>)
+            <h1 id="Loading-Demo"><a href="#Loading-Demo" class="headerlink" title="Loading Demo"></a>Loading Demo</h1><p class="codepen" data-height="482" data-theme-id="dark" data-default-tab="css,result" data-user="smile25896" data-slug-hash="dBKpOO" style="height: 482px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="100DaysCss #04">
+  <span>See the Pen <a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/dBKpOO" >
+  100DaysCss #04<i class="fas fa-external-link-alt"></i></a> by Cathy (<a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896" >@smile25896<i class="fas fa-external-link-alt"></i></a>)
   on <a class="link"   target="_blank" rel="noopener" href="https://codepen.io" >CodePen<i class="fas fa-external-link-alt"></i></a>.</span>
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-<p>這次的金字塔和金字塔的陰影的三角形不是以往學到的透過border畫出來的，而是透過<code>clip-path</code>這個屬性畫成的，透過這個屬性不只三角形，各式各樣的圖形感覺都能畫得出來！<br>再搭配Day2學到的動畫，改變一下天空、金字塔的顏色以及太陽和陰影的角度，就能夠完成。另外雖然範例沒有，但我還加了黃昏時候的橘黃色感覺。</p>
+<p>原本的題目是圓形，我自己換成了三角形並加了旋轉的效果。這個題目比較像之前的綜合練習，三個三角形各有一點時間差，最大的三角形最早變大但最晚變小，相反最小的三角形則是最晚變大最早變小。<br>另外一個細節就是，當三角形放得越大時，陰影就越擴散，形成三角形越大的時候，視覺上越靠近自己。另外因為我改成了三角形一般的<code>box-shadow</code>沒辦法使用，要改成用<code>filter: drop-shadow()</code>製作陰影。</p>
 <h1 id="學習重點"><a href="#學習重點" class="headerlink" title="學習重點"></a>學習重點</h1><ol>
-<li><code>clip-path</code></li>
+<li>陰影：<code>filter: drop-shadow()</code></li>
+<li>動畫製作</li>
 </ol>
-<h2 id="clip-path"><a href="#clip-path" class="headerlink" title="clip-path"></a>clip-path</h2><p><code>clip-path</code>是利用剪裁遮罩，建立可視區域，可視區域外的地方皆被隱藏，透過<code>clip-path</code>產生的剪裁遮罩來產生各式各樣圖形。<br><code>clip-path</code>有非常多種用法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">circle</span>();    // 圓型</span><br><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">ellipse</span>();   // 橢圓型</span><br><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>();   // 多邊形</span><br></pre></td></tr></table></figure>
+<h2 id="陰影：filter-drop-shadow"><a href="#陰影：filter-drop-shadow" class="headerlink" title="陰影：filter: drop-shadow()"></a>陰影：filter: drop-shadow()</h2><p>一般陰影常用<code>box-shadow</code>這個屬性，但<code>box-shadow</code>只能做出方形的陰影，並不會針對實際的形狀做出對應形狀的陰影。</p>
+<p>像是這樣：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-shadow</span>: <span class="number">2px</span> <span class="number">2px</span> <span class="number">6px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.7</span>);</span><br></pre></td></tr></table></figure>
+<img src="/images/posts/dayscss04/01.png" width="100px" style="box-shadow: unset;">
+<br/>
 
-<p>其中三角形就是使用<code>polygon()</code>，參數分別對應到多邊形點的xy軸，所以幾個參數就代表有幾個點。</p>
-<p>直角三角形：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">0</span> <span class="number">0</span>, <span class="number">0%</span> <span class="number">100%</span>, <span class="number">100%</span> <span class="number">100%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/01.png" width="100px" style="box-shadow: unset;">
+<p>但<code>filter: drop-shadow()</code>只會針對非透明的部分做陰影，就可以做出三角形的陰影。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">5px</span> <span class="number">5px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.7</span>));</span><br></pre></td></tr></table></figure>
 
-<p>或是任意調整點的位置：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">50%</span> <span class="number">0%</span>, <span class="number">0</span> <span class="number">100%</span>, <span class="number">94%</span> <span class="number">63%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/02.png" width="100px" style="box-shadow: unset;">
-
-<p>除了三角形也可以畫更多邊形，像是八邊形：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">50%</span> <span class="number">0%</span>, <span class="number">100%</span> <span class="number">38%</span>, <span class="number">82%</span> <span class="number">100%</span>, <span class="number">18%</span> <span class="number">100%</span>, <span class="number">0%</span> <span class="number">38%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/03.png" width="100px" style="box-shadow: unset;">
+<img src="/images/posts/dayscss04/02.png" width="100px" style="box-shadow: unset;">
 
 
-<p>還可以做一些其他的形狀，像是：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">20%</span> <span class="number">0%</span>, <span class="number">0%</span> <span class="number">20%</span>, <span class="number">30%</span> <span class="number">50%</span>, <span class="number">0%</span> <span class="number">80%</span>, <span class="number">20%</span> <span class="number">100%</span>, <span class="number">50%</span> <span class="number">70%</span>, <span class="number">80%</span> <span class="number">100%</span>, <span class="number">100%</span> <span class="number">80%</span>, <span class="number">70%</span> <span class="number">50%</span>, <span class="number">100%</span> <span class="number">20%</span>, <span class="number">80%</span> <span class="number">0%</span>, <span class="number">50%</span> <span class="number">30%</span>);</span><br></pre></td></tr></table></figure>
-<img src="/images/posts/dayscss03/04.png" width="100px" style="box-shadow: unset;">
+<h2 id="動畫製作"><a href="#動畫製作" class="headerlink" title="動畫製作"></a>動畫製作</h2><p>這三個三角形依序變大之後，再返向縮小回去，因此我們只要建立好放大的動畫，再使用<code>animation-direction: alternate;</code>讓動畫在執行完一次後，反向再執行一次。（加速函式也會跟著反過來）</p>
+<p>接著先來寫最大的三角形的關鍵影格：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> circle1-animate&#123;</span><br><span class="line">  0%&#123;</span><br><span class="line">    <span class="attribute">filter</span>: drop-shadow(<span class="number">2px</span> <span class="number">2px</span> <span class="number">3px</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.2</span>));</span><br><span class="line">    <span class="attribute">transform</span>: scale(<span class="number">0</span>) rotate(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">filter</span>: drop-shadow(<span class="number">10px</span> <span class="number">10px</span> <span class="number">15px</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.3</span>));</span><br><span class="line">    <span class="attribute">transform</span>: scale(<span class="number">1</span>) rotate(<span class="number">120deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這樣就會有一個會不停邊放大邊旋轉之後又邊縮小邊旋轉的三角形動畫，另外想讓三角形縮小至不見之後，隔了一小段時間才再次出現，因此調整一下關鍵影格，讓三角形0%~30%的時間都維持在<code>scale(0)</code>的狀態。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> circle1-animate&#123;</span><br><span class="line">  <span class="number">0%</span>, <span class="number">30%</span>&#123;</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">2px</span> <span class="number">2px</span> <span class="number">3px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.2</span>));</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>) <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">10px</span> <span class="number">10px</span> <span class="number">15px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.3</span>));</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>) <span class="built_in">rotate</span>(<span class="number">120deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>有興趣的話可以到<a class="link"   target="_blank" rel="noopener" href="https://bennettfeely.com/clippy/" >CSS clip-path maker<i class="fas fa-external-link-alt"></i></a>上操作看看。</p>
+<p>中型的三角形要在大三角形出現之後才出現，因此設定他的關鍵影格0%~50%的時間都維持在<code>scale(0)</code>的狀態，最小的則是0%~70%的時間都維持在<code>scale(0)</code>的狀態，其他皆與大三角形相同。</p>
+<p>接著將關鍵影格套用至<code>animation</code>屬性中，透過之前學到的<code>cubic-bezier</code>設定加速函式，讓動畫在正向播放時呈現「快-慢」的效果，<code>alternate</code>倒轉時也會將加速函式倒過來變成「慢-快」。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.circle1</span>&#123;</span><br><span class="line">  <span class="attribute">animation</span>: circle1-animate <span class="number">2s</span> cubic-bezier(.<span class="number">21</span>,.<span class="number">98</span>,.<span class="number">6</span>,.<span class="number">99</span>) infinite alternate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -262,13 +262,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss02/"
+                           href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss03/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 02 Menu Icon</span>
+                                <span class="post-nav-title-item">[CSS100] Day 03 The Pyramid</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                         </a>
@@ -278,10 +278,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss04/"
+                           href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss08/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 04 Loading</span>
+                                <span class="post-nav-title-item">[CSS100] Day 08 Metaballs</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -396,7 +396,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Pyramid-Demo"><span class="nav-number">1.</span> <span class="nav-text">The Pyramid Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">學習重點</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#clip-path"><span class="nav-number">2.1.</span> <span class="nav-text">clip-path</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Loading-Demo"><span class="nav-number">1.</span> <span class="nav-text">Loading Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">學習重點</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%B0%E5%BD%B1%EF%BC%9Afilter-drop-shadow"><span class="nav-number">2.1.</span> <span class="nav-text">陰影：filter: drop-shadow()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8B%95%E7%95%AB%E8%A3%BD%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">動畫製作</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
