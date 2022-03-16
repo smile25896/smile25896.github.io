@@ -9,7 +9,7 @@
     
     <title>
         
-            [LeetCode] 2. Add Two Numbers 刷題筆記 |
+            [LeetCode] 1. Two Sum 刷題筆記 |
         
         Cathy P
     </title>
@@ -147,7 +147,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">[LeetCode] 2. Add Two Numbers 刷題筆記</span>
+            <span class="title-hover-animation">[LeetCode] 1. Two Sum 刷題筆記</span>
         </div>
 
         
@@ -163,7 +163,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-24 21:03:51
+        <i class="fas fa-edit"></i>&nbsp;2021-03-23 23:47:20
     </span>
     
         <span class="article-categories article-meta-item">
@@ -171,11 +171,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/js/">js</a>&nbsp;
+                        <a href="/categories/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/">程式解題</a>&nbsp;
                     </li>
                 
             </ul>
@@ -214,23 +210,25 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h1><p>LeetCode題目連結：<a target="_blank" rel="noopener" href="https://leetcode.com/problems/add-two-numbers/">https://leetcode.com/problems/add-two-numbers/</a></p>
-<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>輸入兩個不為空的linked lists代表兩個為非負數的整數，這些數字以反方向儲存，每一個node包含一個數字，將兩數相加，並回傳總和的linked lists。</p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>菜鳥的刷題記錄，前端工作兩年後發現很多程式基礎（演算法、資料結構等等）都忘得差不多了，其實當初學生時期的底子也不太紮實。手很生，決定開始上 LeedCode 刷題。<br>基本上是希望是一個紀錄菜鳥成長的過程的系列文。</p>
+<h1 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h1><p>LeetCode 題目連結：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum/" >https://leetcode.com/problems/two-sum/<i class="fas fa-external-link-alt"></i></a></p>
+<p>難度等級：Easy</p>
+<p>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.<br>You may assume that each input would have exactly one solution, and you may not use the same element twice.<br>You can return the answer in any order.</p>
+<p><strong>翻譯：</strong><br>給一個 nums(int array)和 target(int)，找出 nums 陣列中的兩個數值加起來會等於 target，回傳這兩個元素的位置。<br>一定會有唯一解，不會使用相同的元素兩次。</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]</span><br><span class="line">Output: [7,0,8]</span><br><span class="line">Explanation: 342 + 465 &#x3D; 807.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [2,7,11,15], target &#x3D; 9</span><br><span class="line">Output: [0,1]</span><br><span class="line">Output: Because nums[0] + nums[1] &#x3D;&#x3D; 9, we return [0, 1].</span><br></pre></td></tr></table></figure>
+
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [0], l2 &#x3D; [0]</span><br><span class="line">Output: [0]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [3,2,4], target &#x3D; 6</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure>
+
 <p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [9,9,9,9,9,9,9], l2 &#x3D; [9,9,9,9]</span><br><span class="line">Output: [8,9,9,9,0,0,0,1]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [3,3], target &#x3D; 6</span><br><span class="line">Output: [0,1]</span><br></pre></td></tr></table></figure>
 
+<h1 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h1><p>做法：<br>很單純的跑兩個迴圈，第二個迴圈只從第一個數之後的數開始跑，若兩數相加等於零即為答案。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">target</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number[]&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (nums[j] + nums[i] === target) &#123;</span><br><span class="line">        <span class="keyword">return</span> [i, j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h1><p>做法：</p>
-<p>將<code>l1</code>和<code>l2</code>的<code>.val</code>相加<code>answers</code>裡，溢位的部分直接將<code>answers.next</code>的值加<code>1</code>，然後將<code>l1</code>和<code>l2</code>移到<code>.next</code>，直到<code>l1</code>和<code>l2</code>皆等於<code>null</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val, next) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.next = (next===undefined ? null : next)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> answers = <span class="keyword">new</span> ListNode(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">let</span> curNode = answers;</span><br><span class="line">  <span class="keyword">let</span> isFirst = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(l1 || l2)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!isFirst)&#123;</span><br><span class="line">      <span class="keyword">if</span>(!curNode.next)&#123;</span><br><span class="line">        curNode.next = <span class="keyword">new</span> ListNode(<span class="number">0</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      curNode = curNode.next   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      isFirst = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> sum=curNode.val;</span><br><span class="line">    <span class="keyword">if</span>(l1)&#123;</span><br><span class="line">      sum += l1.val</span><br><span class="line">      l1 = l1.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(l2)&#123;</span><br><span class="line">      sum += l2.val</span><br><span class="line">      l2 = l2.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(sum &lt; <span class="number">10</span>)&#123;</span><br><span class="line">      curNode.val = sum</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      curNode.val = sum-<span class="number">10</span></span><br><span class="line">      curNode.next = <span class="keyword">new</span> ListNode(<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> answers</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="成績"><a href="#成績" class="headerlink" title="成績"></a>成績</h1><p>Runtime: 128 ms (排名：89.43%)<br>Memory Usage: 43.8 MB (排名：85.30%)</p>
-<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>很久沒碰linked lists了，也沒用javascript寫過，一開始一直在想開頭會多一個0，後來才想到直接回傳<code>.next</code>就可以跳過開頭的0了。</p>
+<h1 id="成績"><a href="#成績" class="headerlink" title="成績"></a>成績</h1><p>Runtime: 76 ms (排名：83.53%)<br>Memory Usage: 38.7 MB (排名：73.70%)</p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>LeetCode 的第一題，單純解出答案不要求效率的話，基本上沒有什麼難度，算是很溫和的試水溫題。</p>
 
         </div>
 
@@ -242,13 +240,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/%E5%89%8D%E7%AB%AF/js/leetcode1/"
+                           href="/%E5%89%8D%E7%AB%AF/CSS/dayscss09/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[LeetCode] 1. Two Sum 刷題筆記</span>
+                                <span class="post-nav-title-item">[CSS100] Day 09 Weather</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                         </a>
@@ -258,10 +256,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/%E5%89%8D%E7%AB%AF/js/leetcode7/"
+                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode2/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[LeetCode] 3. Reverse Integer 刷題筆記</span>
+                                <span class="post-nav-title-item">[LeetCode] 2. Add Two Numbers 刷題筆記</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -376,7 +374,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">解題過程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E7%B8%BE"><span class="nav-number">3.</span> <span class="nav-text">成績</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">4.</span> <span class="nav-text">心得</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">解題過程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E7%B8%BE"><span class="nav-number">4.</span> <span class="nav-text">成績</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">5.</span> <span class="nav-text">心得</span></a></li></ol>
     </div>
 </div>
         </aside>

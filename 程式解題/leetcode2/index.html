@@ -9,7 +9,7 @@
     
     <title>
         
-            [LeetCode] 3. Reverse Integer 刷題筆記 |
+            [LeetCode] 2. Add Two Numbers 刷題筆記 |
         
         Cathy P
     </title>
@@ -147,7 +147,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">[LeetCode] 3. Reverse Integer 刷題筆記</span>
+            <span class="title-hover-animation">[LeetCode] 2. Add Two Numbers 刷題筆記</span>
         </div>
 
         
@@ -163,7 +163,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-26 00:19:39
+        <i class="fas fa-edit"></i>&nbsp;2021-03-24 21:03:51
     </span>
     
         <span class="article-categories article-meta-item">
@@ -171,11 +171,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/js/">js</a>&nbsp;
+                        <a href="/categories/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/">程式解題</a>&nbsp;
                     </li>
                 
             </ul>
@@ -214,25 +210,24 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h1><p>Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.<br>Assume the environment does not allow you to store 64-bit integers (signed or unsigned).</p>
-<p>輸入一個32-bit的整數x，將數字倒過來回傳。如果倒過來的數字超出<code>[-2^31, 2^31 - 1]</code>範圍，則回傳0。</p>
+            <h1 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h1><p>LeetCode 題目連結：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/add-two-numbers/" >https://leetcode.com/problems/add-two-numbers/<i class="fas fa-external-link-alt"></i></a></p>
+<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.<br>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>輸入兩個不為空的 linked lists 代表兩個為非負數的整數，這些數字以反方向儲存，每一個 node 包含一個數字，將兩數相加，並回傳總和的 linked lists。</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: x &#x3D; 123</span><br><span class="line">Output: 321</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]</span><br><span class="line">Output: [7,0,8]</span><br><span class="line">Explanation: 342 + 465 &#x3D; 807.</span><br></pre></td></tr></table></figure>
+
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: x &#x3D; -123</span><br><span class="line">Output: -321</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [0], l2 &#x3D; [0]</span><br><span class="line">Output: [0]</span><br></pre></td></tr></table></figure>
+
 <p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: x &#x3D; 120</span><br><span class="line">Output: 21</span><br></pre></td></tr></table></figure>
-<p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: x &#x3D; 0</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 &#x3D; [9,9,9,9,9,9,9], l2 &#x3D; [9,9,9,9]</span><br><span class="line">Output: [8,9,9,9,0,0,0,1]</span><br></pre></td></tr></table></figure>
 
-<h1 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h1><h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p>基本上是把數字轉成字串，倒著<br>因為負號不需要倒轉，先取絕對值，將x轉成字串再返向存入一個新的字串，如果有負號最後把負號加回去。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">x</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> reverse = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> xStr = <span class="built_in">String</span>(<span class="built_in">Math</span>.abs(x))</span><br><span class="line">  <span class="keyword">let</span> ans = <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=xStr.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">    ans += xStr[i]</span><br><span class="line">  &#125;</span><br><span class="line">  ans = <span class="built_in">Number</span>(ans)</span><br><span class="line">  ans = x&gt;<span class="number">0</span>? ans: -ans;</span><br><span class="line">  <span class="keyword">if</span>(ans&gt;<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">31</span>) || ans&lt;-<span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">return</span> ans</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h1><p>做法：</p>
+<p>將<code>l1</code>和<code>l2</code>的<code>.val</code>相加<code>answers</code>裡，溢位的部分直接將<code>answers.next</code>的值加<code>1</code>，然後將<code>l1</code>和<code>l2</code>移到<code>.next</code>，直到<code>l1</code>和<code>l2</code>皆等於<code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val, next) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.next = (next===undefined ? null : next)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span> (<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> answers = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">let</span> curNode = answers;</span><br><span class="line">  <span class="keyword">let</span> isFirst = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (l1 || l2) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isFirst) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!curNode.next) &#123;</span><br><span class="line">        curNode.next = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      curNode = curNode.next;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      isFirst = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> sum = curNode.val;</span><br><span class="line">    <span class="keyword">if</span> (l1) &#123;</span><br><span class="line">      sum += l1.val;</span><br><span class="line">      l1 = l1.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (l2) &#123;</span><br><span class="line">      sum += l2.val;</span><br><span class="line">      l2 = l2.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (sum &lt; <span class="number">10</span>) &#123;</span><br><span class="line">      curNode.val = sum;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      curNode.val = sum - <span class="number">10</span>;</span><br><span class="line">      curNode.next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> answers;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="成績"><a href="#成績" class="headerlink" title="成績"></a>成績</h2><p>Runtime: 100 ms (排名：58.87%)<br>Memory Usage: 40.5 MB (排名：35.38%)</p>
-<h2 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h2><p>再思考怎麼改善的時候，突然想到或許不一定要用string，直接用數字存也可以，於是就有了這個方法2。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">x</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> reverse = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> xStr = <span class="built_in">Math</span>.abs(x)</span><br><span class="line">  <span class="keyword">let</span> ans = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span>(xStr&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">    ans += xStr%<span class="number">10</span>;</span><br><span class="line">    ans *= <span class="number">10</span>;</span><br><span class="line">    xStr = <span class="built_in">parseInt</span>(xStr/<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  ans += xStr;</span><br><span class="line">  <span class="keyword">if</span>(x&lt;<span class="number">0</span>)&#123;</span><br><span class="line">    ans = -ans</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span>(ans&gt;<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">31</span>) || ans&lt;-<span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">31</span>))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">return</span> ans</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="成績-1"><a href="#成績-1" class="headerlink" title="成績"></a>成績</h1><p>小小改善了一點<br>Runtime: 100 ms (排名：58.87%)<br>Memory Usage: 40.3 MB (排名：58.06%)</p>
+<h1 id="成績"><a href="#成績" class="headerlink" title="成績"></a>成績</h1><p>Runtime: 128 ms (排名：89.43%)<br>Memory Usage: 43.8 MB (排名：85.30%)</p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>很久沒碰 linked lists 了，也沒用 javascript 寫過，一開始一直在想開頭會多一個 0，後來才想到直接回傳<code>.next</code>就可以跳過開頭的 0 了。</p>
 
         </div>
 
@@ -244,13 +239,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/%E5%89%8D%E7%AB%AF/js/leetcode2/"
+                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode1/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[LeetCode] 2. Add Two Numbers 刷題筆記</span>
+                                <span class="post-nav-title-item">[LeetCode] 1. Two Sum 刷題筆記</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                         </a>
@@ -260,10 +255,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/uncategorized/swift01/"
+                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode7/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Swift</span>
+                                <span class="post-nav-title-item">[LeetCode] 7. Reverse Integer 刷題筆記</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -378,7 +373,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">解題過程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%951"><span class="nav-number">2.1.</span> <span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E7%B8%BE"><span class="nav-number">2.2.</span> <span class="nav-text">成績</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%952"><span class="nav-number">2.3.</span> <span class="nav-text">方法2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E7%B8%BE-1"><span class="nav-number">3.</span> <span class="nav-text">成績</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">解題過程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E7%B8%BE"><span class="nav-number">3.</span> <span class="nav-text">成績</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">4.</span> <span class="nav-text">心得</span></a></li></ol>
     </div>
 </div>
         </aside>
