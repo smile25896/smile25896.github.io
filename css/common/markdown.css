@@ -1,6 +1,6 @@
 .markdown-body {
   font-size: 1rem;
-  line-height: 2em;
+  line-height: 1.85em;
 }
 .markdown-body blockquote {
   box-sizing: border-box;
@@ -15,7 +15,8 @@
   padding: 5px 5px 5px 10px;
 }
 .markdown-body p {
-  line-height: 2;
+  line-height: 1.65;
+  margin: 1.25rem 0;
   color: var(--default-text-color);
 }
 .markdown-body a {
@@ -45,13 +46,18 @@
 .markdown-body strong {
   color: var(--default-text-color);
 }
+.markdown-body span.highlight {
+  color: var(--highlight-color);
+  font-weight: bolder;
+}
 .markdown-body em {
   color: var(--default-text-color);
 }
 .markdown-body ul > li,
 .markdown-body ol > li {
   margin-left: 16px;
-  line-height: 2rem;
+  margin-bottom: 0.625rem;
+  line-height: 1.85em;
 }
 .markdown-body ul li {
   list-style: disc;
@@ -91,7 +97,7 @@ keep-tablet()
 }
 .markdown-body h1,
 .markdown-body h2 {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 600;
   margin-block-start: 2.2em;
 keep-tablet()

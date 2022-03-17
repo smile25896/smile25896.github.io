@@ -9,7 +9,7 @@
     
     <title>
         
-            標籤: Javascript |
+            [CSS] Box Model 盒子模型 |
         
         Cathy P
     </title>
@@ -80,7 +80,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/tags"
                             >
                                 標籤
@@ -124,7 +124,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/tags">標籤</a>
                 </li>
             
@@ -144,73 +144,134 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="tag-container">
-        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;Javascript
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">[CSS] Box Model 盒子模型</span>
         </div>
-        <div class="tag-post-list">
-            
-<div class="archive-list-container">
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Cathy P</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-03-18 00:17:15
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[1]</span>
-            </div>
-            <ul class="article-list">
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
+                    <li>
+                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/">CSS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CSS/">CSS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>Box Model 是 CSS 很重要的一個基礎觀念</p>
+<h1 id="什麼是-Box-Model？"><a href="#什麼是-Box-Model？" class="headerlink" title="什麼是 Box Model？"></a>什麼是 Box Model？</h1><p>每個 HTML 元素可以說是都一個盒子，這個盒子由四個構造組成的，<br>由內而外分別是： <span class="highlight">Content ( 內容 )</span>、<span class="highlight">Padding ( 內邊距 )</span>、<span class="highlight">Border ( 邊框 )</span> 和 <span class="highlight">Margin ( 外邊距 )</span>。</p>
+<ul>
+<li>Content：顯示文字和圖像的區域。</li>
+<li>Padding：Content 和 Border 之間的填充區域。</li>
+<li>Border：邊框</li>
+<li>Margin：與其他盒子的距離。</li>
+</ul>
+<p>如下圖所示：</p>
+<img src="/images/posts/css-box-model/box-model.png" width="100%" style="max-width:700px; box-shadow: unset;">
+圖片來源：<a herf="https://www.w3schools.com/css/css_boxmodel.asp">w3schools</a>
+
+<p>一般來說我們會把 Content 、 Padding 和 Border 當作元素本身，而 Margin 則是元素與其他元素的距離。</p>
+<h1 id="Margin-的特性"><a href="#Margin-的特性" class="headerlink" title="Margin 的特性"></a>Margin 的特性</h1><ol>
+<li>永遠是透明的</li>
+<li>對於 inline 元素，垂直方向的 margin 沒有作用，只能設定水平方向。</li>
+<li>值可以設定成：<code>&lt;length&gt;</code>、<code>&lt;pecentage&gt;</code>或<code>auto</code></li>
+<li>值若設定百分比(%)，百分比的參考準則為<strong>父元素的</strong><span class="highlight">寬度</span>。很容易搞混的是：<code>margin-top</code> 和 <code>margin-top</code> 也是參考父元素的寬度。</li>
+<li>值若設定 <code>auto</code> ，對於<code>margin-left</code>和<code>margin-left</code>來說，等於「剩餘空間」的意思。<br>代表若我設定 <code>margin-left: auto; margin-right: 0;</code> 則代表右邊的外邊距為零，左邊則會補足剩餘空間，也就是向右靠齊的效果。<br>若兩邊都設定成 <code>auto</code>，如：<code>margin-left: auto; margin-right: auto;</code> 則代表左右兩邊會平均分配剩餘空間，也就是水平置中的效果。<br>對於<code>margin-top</code>和<code>margin-bottom</code>來說，設值為<code>auto</code>等於 0。</li>
+<li>可以有負值。</li>
+</ol>
+<h1 id="Padding-的特性"><a href="#Padding-的特性" class="headerlink" title="Padding 的特性"></a>Padding 的特性</h1><ol>
+<li>背景色依據元素的<code>background</code>設定。</li>
+<li>對於 inline 元素，垂直方向的 margin 沒有作用，只能設定水平方向。</li>
+<li>值可以設定成：<code>&lt;length&gt;</code>或<code>&lt;pecentage&gt;</code></li>
+<li>值若設定百分比(%)，百分比的參考準則為<strong>父元素的</strong><span class="highlight">寬度</span>。同 margin 屬性相同：<code>padding-top</code> 和 <code>padding-top</code> 也是參考父元素的寬度。</li>
+<li>不能有負值。</li>
+</ol>
+<h1 id="Border-的特性"><a href="#Border-的特性" class="headerlink" title="Border 的特性"></a>Border 的特性</h1><p>可設定三種屬性：</p>
+<ol>
+<li>border-width：寬度</li>
+<li>border-color：顏色</li>
+<li>border-style：樣式</li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
                            href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode37/"
-                        >[LeetCode] 37. Sudoku Solver 刷題筆記</a>
-                        <span class="article-date">03/16</span>
-                    </li>
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">[LeetCode] 37. Sudoku Solver 刷題筆記</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                        </a>
+                    </div>
                 
-            </ul>
-        </section>
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">[3]</span>
+                
             </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode7/"
-                        >[LeetCode] 7. Reverse Integer 刷題筆記</a>
-                        <span class="article-date">03/26</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode2/"
-                        >[LeetCode] 2. Add Two Numbers 刷題筆記</a>
-                        <span class="article-date">03/24</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode1/"
-                        >[LeetCode] 1. Two Sum 刷題筆記</a>
-                        <span class="article-date">03/23</span>
-                    </li>
-                
-            </ul>
-        </section>
-    
-</div>
+        
 
-        </div>
-    </div>
-
-    <div class="tag-paginator">
-        <div class="paginator">
-    
-
-    
-</div>
-
+        
     </div>
 </div>
 
@@ -247,6 +308,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -292,6 +370,14 @@
 
     </div>
 
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Box-Model%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什麼是 Box Model？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Margin-%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">Margin 的特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Padding-%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">Padding 的特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Border-%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">Border 的特性</span></a></li></ol>
+    </div>
+</div>
+        </aside>
     
 
     <div class="image-viewer-container">
@@ -347,6 +433,8 @@
 
 
 <div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
     
 </div>
 
