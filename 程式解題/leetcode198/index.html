@@ -9,7 +9,7 @@
     
     <title>
         
-            [CSS] Box Model 盒子模型 |
+            [LeetCode] 198. House Robber 刷題筆記 |
         
         Cathy P
     </title>
@@ -147,7 +147,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">[CSS] Box Model 盒子模型</span>
+            <span class="title-hover-animation">[LeetCode] 198. House Robber 刷題筆記</span>
         </div>
 
         
@@ -163,7 +163,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-18 00:17:15
+        <i class="fas fa-edit"></i>&nbsp;2022-03-19 23:12:13
     </span>
     
         <span class="article-categories article-meta-item">
@@ -171,11 +171,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/">CSS</a>&nbsp;
+                        <a href="/categories/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/">程式解題</a>&nbsp;
                     </li>
                 
             </ul>
@@ -187,7 +183,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/CSS/">CSS</a>&nbsp;
+                        <a href="/tags/Javascript/">Javascript</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/LeetCode/">LeetCode</a>&nbsp;
                     </li>
                 
             </ul>
@@ -210,40 +210,24 @@
         
 
         <div class="article-content markdown-body">
-            <p>Box Model 是 CSS 很重要的一個基礎觀念。</p>
-<h1 id="什麼是-Box-Model？"><a href="#什麼是-Box-Model？" class="headerlink" title="什麼是 Box Model？"></a>什麼是 Box Model？</h1><p>每個 HTML 元素可以說是都一個盒子，這個盒子由四個構造組成的，<br>由內而外分別是： <span class="highlight">Content ( 內容 )</span>、<span class="highlight">Padding ( 內邊距 )</span>、<span class="highlight">Border ( 邊框 )</span> 和 <span class="highlight">Margin ( 外邊距 )</span>。</p>
-<ul>
-<li>Content：顯示文字和圖像的區域。</li>
-<li>Padding：Content 和 Border 之間的填充區域。</li>
-<li>Border：邊框</li>
-<li>Margin：與其他盒子的距離。</li>
-</ul>
-<p>如下圖所示：</p>
-<img src="/images/posts/css-box-model/box-model.png" width="100%" style="max-width:700px; box-shadow: unset;">
-圖片來源：<a herf="https://www.w3schools.com/css/css_boxmodel.asp">w3schools</a>
+            <h1 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h1><p>LeetCode 連結：<br><a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/sudoku-solver/" >https://leetcode.com/problems/sudoku-solver/<i class="fas fa-external-link-alt"></i></a></p>
+<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.</p>
+<p>你是一個小偷。你打算偷一整條街的房子。每一間房子都有錢可以偷，但如果偷了兩間相鄰的房子，就會觸發警報系統引來警察，導致你被逮補。</p>
+<p>題目會提供一個數字 array，array 的值代表每一間房子可以偷盜的錢，再不驚動警報系統的前提，要怎麼偷才能偷到最多的錢呢？</p>
+<p>Example 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [1,2,3,1]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: 1 + 3 &#x3D; 4.</span><br></pre></td></tr></table></figure>
 
-<p>一般來說我們會把 Content 、 Padding 和 Border 當作元素本身，而 Margin 則是元素與其他元素的距離。</p>
-<h1 id="Margin-的特性"><a href="#Margin-的特性" class="headerlink" title="Margin 的特性"></a>Margin 的特性</h1><ol>
-<li>永遠是透明的</li>
-<li>對於 inline 元素，垂直方向的 margin 沒有作用，只能設定水平方向。</li>
-<li>值可以設定成：<code>&lt;length&gt;</code>、<code>&lt;pecentage&gt;</code>或<code>auto</code></li>
-<li>值若設定百分比(%)，百分比的參考準則為<strong>父元素的</strong><span class="highlight">寬度</span>。很容易搞混的是：<code>margin-top</code> 和 <code>margin-top</code> 也是參考父元素的寬度。</li>
-<li>值若設定 <code>auto</code> ，對於<code>margin-left</code>和<code>margin-left</code>來說，等於「剩餘空間」的意思。<br>代表若我設定 <code>margin-left: auto; margin-right: 0;</code> 則代表右邊的外邊距為零，左邊則會補足剩餘空間，也就是向右靠齊的效果。<br>若兩邊都設定成 <code>auto</code>，如：<code>margin-left: auto; margin-right: auto;</code> 則代表左右兩邊會平均分配剩餘空間，也就是水平置中的效果。<br>對於<code>margin-top</code>和<code>margin-bottom</code>來說，設值為<code>auto</code>等於 0。</li>
-<li>可以有負值。</li>
+<p>Example 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [2,7,9,3,1]</span><br><span class="line">Output: 12</span><br><span class="line">Explanation: 2 + 9 + 1 &#x3D; 12.</span><br></pre></td></tr></table></figure>
+
+<h2 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h2><ol>
+<li>陣列 nums 紀錄每個房子的錢，我們還需要一個紀錄一個目前房子可以偷到的最大值的陣列 m。</li>
+<li>只有第一間房子的時候，只有第一間可以偷。所以最大值 m[0] 為 nums[0]。</li>
+<li>當有兩間房子的時候，因為不能偷相鄰的房子，兩間挑一間比較多錢的偷。m[1] = Max(nums[0],nums[1])。</li>
+<li>當有 n 間房子的時候，若選擇了這間房子，則不能去偷上一間房子，所以要在「上一間房子的最大值」和「上上間房子的最大值+這間房子」取大值。Max(m[n-1], m[n-2]+nums[n])</li>
 </ol>
-<h1 id="Padding-的特性"><a href="#Padding-的特性" class="headerlink" title="Padding 的特性"></a>Padding 的特性</h1><ol>
-<li>背景色依據元素的<code>background</code>設定。</li>
-<li>對於 inline 元素，垂直方向的 margin 沒有作用，只能設定水平方向。</li>
-<li>值可以設定成：<code>&lt;length&gt;</code>或<code>&lt;pecentage&gt;</code></li>
-<li>值若設定百分比(%)，百分比的參考準則為<strong>父元素的</strong><span class="highlight">寬度</span>。同 margin 屬性相同：<code>padding-top</code> 和 <code>padding-top</code> 也是參考父元素的寬度。</li>
-<li>不能有負值。</li>
-</ol>
-<h1 id="Border-的特性"><a href="#Border-的特性" class="headerlink" title="Border 的特性"></a>Border 的特性</h1><p>可設定三種屬性：</p>
-<ol>
-<li>border-width：寬度</li>
-<li>border-color：顏色</li>
-<li>border-style：樣式</li>
-</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> rob = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 陣列 nums 紀錄每個房子的錢，我們還需要一個紀錄一個目前房子可以偷到的最大值的陣列 m。</span></span><br><span class="line">    <span class="keyword">let</span> maxs = [];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 只有第一間房子的時候，只有第一間可以偷。。</span></span><br><span class="line">    <span class="comment">// 3. 當有兩間房子的時候，因為不能偷相鄰的房子，兩間挑一間比較多錢的偷。</span></span><br><span class="line">    maxs[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">    maxs[<span class="number">1</span>] = <span class="built_in">Math</span>.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 當有 n 間房子的時候，若選擇了這間房子，則不能去偷上一間房子，</span></span><br><span class="line">    <span class="comment">// 所以要在「上一間房子的最大值」和「上上間房子的最大值+這間房子」取大值。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">2</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">        maxs[i] = <span class="built_in">Math</span>.max(maxs[i-<span class="number">1</span>], maxs[i-<span class="number">2</span>]+nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxs[maxs.length-<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -255,33 +239,18 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode37/"
+                           href="/%E5%89%8D%E7%AB%AF/CSS/css-box-model/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[LeetCode] 37. Sudoku Solver 刷題筆記</span>
+                                <span class="post-nav-title-item">[CSS] Box Model 盒子模型</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                         </a>
                     </div>
                 
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode198/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">[LeetCode] 198. House Robber 刷題筆記</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
                 
             </div>
         
@@ -389,7 +358,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Box-Model%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什麼是 Box Model？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Margin-%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">Margin 的特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Padding-%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">Padding 的特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Border-%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">Border 的特性</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">解題過程</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
