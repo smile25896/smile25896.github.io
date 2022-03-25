@@ -214,14 +214,14 @@
 <p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
 <p>Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.</p>
 <p>你是一個小偷。你打算偷一整條街的房子。每一間房子都有錢可以偷，但如果偷了兩間相鄰的房子，就會觸發警報系統引來警察，導致你被逮補。</p>
-<p>題目會提供一個數字 array，array 的值代表每一間房子可以偷盜的錢，再不驚動警報系統的前提，要怎麼偷才能偷到最多的錢呢？</p>
+<p>題目會提供一個數字 array，array 的值代表每一間房子可以偷盜的錢，在<br>不驚動警報系統的前提，要怎麼偷才能偷到最多的錢呢？</p>
 <p>Example 1:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [1,2,3,1]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: 1 + 3 &#x3D; 4.</span><br></pre></td></tr></table></figure>
 
 <p>Example 2:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [2,7,9,3,1]</span><br><span class="line">Output: 12</span><br><span class="line">Explanation: 2 + 9 + 1 &#x3D; 12.</span><br></pre></td></tr></table></figure>
 
-<h2 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h2><ol>
+<h1 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h1><ol>
 <li>陣列 nums 紀錄每個房子的錢，我們還需要一個紀錄一個目前房子可以偷到的最大值的陣列 m。</li>
 <li>只有第一間房子的時候，只有第一間可以偷。所以最大值 m[0] 為 nums[0]。</li>
 <li>當有兩間房子的時候，因為不能偷相鄰的房子，兩間挑一間比較多錢的偷。m[1] = Max(nums[0],nums[1])。</li>
@@ -258,7 +258,7 @@
                            href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode945/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[LeetCode] 946. Validate Stack Sequences</span>
+                                <span class="post-nav-title-item">[LeetCode] 946. Validate Stack Sequences 刷題筆記</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -373,7 +373,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">解題過程</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">解題過程</span></a></li></ol>
     </div>
 </div>
         </aside>
