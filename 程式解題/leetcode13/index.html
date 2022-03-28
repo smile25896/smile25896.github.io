@@ -9,7 +9,7 @@
     
     <title>
         
-            [CSS100] Day 05 Statistic |
+            [LeetCode] 13. Roman to Integer |
         
         Cathy P
     </title>
@@ -147,7 +147,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">[CSS100] Day 05 Statistic</span>
+            <span class="title-hover-animation">[LeetCode] 13. Roman to Integer</span>
         </div>
 
         
@@ -163,7 +163,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-14 22:01:10
+        <i class="fas fa-edit"></i>&nbsp;2022-03-28 21:09:18
     </span>
     
         <span class="article-categories article-meta-item">
@@ -171,11 +171,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/">CSS</a>&nbsp;
+                        <a href="/categories/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/">程式解題</a>&nbsp;
                     </li>
                 
             </ul>
@@ -187,11 +183,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/CSS/">CSS</a>&nbsp;
+                        <a href="/tags/Javascript/">Javascript</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/CSS100/">CSS100</a>&nbsp;
+                        | <a href="/tags/LeetCode/">LeetCode</a>&nbsp;
                     </li>
                 
             </ul>
@@ -214,19 +210,28 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Statistic-Demo"><a href="#Statistic-Demo" class="headerlink" title="Statistic Demo"></a>Statistic Demo</h1><p class="codepen" data-height="482" data-theme-id="dark" data-default-tab="css,result" data-user="smile25896" data-slug-hash="RzYBbY" style="height: 482px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS100Days 005">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/RzYBbY">
-  CSS100Days 005</a> by Cathy (<a target="_blank" rel="noopener" href="https://codepen.io/smile25896">@smile25896</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+            <h1 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h1><p>難度：Easy</p>
+<p>LeetCode 連結：<br><a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problems/roman-to-integer/" >https://leetcode.com/problems/roman-to-integer/<i class="fas fa-external-link-alt"></i></a></p>
+<p>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.</p>
+<p>Symbol Value<br>I 1<br>V 5<br>X 10<br>L 50<br>C 100<br>D 500<br>M 1000<br>For example, 2 is written as II in Roman numeral, just two one’s added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.</p>
+<p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:</p>
+<p>I can be placed before V (5) and X (10) to make 4 and 9.<br>X can be placed before L (50) and C (100) to make 40 and 90.<br>C can be placed before D (500) and M (1000) to make 400 and 900.<br>Given a roman numeral, convert it to an integer.</p>
+<p>題目有點長，簡單來說就是要把羅馬符號數字轉換成阿拉伯數字。</p>
+<h1 id="解題過程"><a href="#解題過程" class="headerlink" title="解題過程"></a>解題過程</h1><p>羅馬數字有一個特徵：</p>
+<p>1.當羅馬符號的數值呈現降冪時，只要把每個羅馬符號數值加總就是答案。<br>Example 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;III&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: 為降冪排列：I&#x3D;1，1 + 1 + 1 &#x3D; 3</span><br></pre></td></tr></table></figure>
 
-<p>這次的題目使用svg畫了折線圖，折線圖上的點透過絕對定位固定位置。</p>
-<h1 id="學習重點"><a href="#學習重點" class="headerlink" title="學習重點"></a>學習重點</h1><ol>
-<li>折線圖製作</li>
-</ol>
-<p>html部分，使用了svg中的<code>polyline</code>（折線），指定每個點的x,y位置，可以畫出連續的直線。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;9,46 50,12 90,23 130,11 171,38 211,48 251,19&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;LVIII&quot;</span><br><span class="line">Output: 58</span><br><span class="line">Explanation: 為降冪排列：L &#x3D; 50, V &#x3D; 5, III &#x3D; 3，</span><br><span class="line">50 + 5 + 3 &#x3D; 58</span><br></pre></td></tr></table></figure>
+
+<p>2.當數值比較小的羅馬符號出現在左邊時，該數值會加上一個負號。</p>
+<p>Example 3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;MCMXCIV&quot;</span><br><span class="line">Output: 1994</span><br><span class="line">Explanation: M &#x3D; 1000, C &#x3D; 100, X &#x3D; 10, V &#x3D; 5, I &#x3D;1.</span><br><span class="line">M &#x3D; 1000</span><br><span class="line">C 出現在比他大的M(1000)左邊 &#x3D; -100</span><br><span class="line">M &#x3D; 1000</span><br><span class="line">X 出現在比他大的C(100)左邊 &#x3D; -10</span><br><span class="line">C &#x3D; 100</span><br><span class="line">I 出現在比他大的V(5)左邊 &#x3D; -1</span><br><span class="line">V &#x3D; 5</span><br><span class="line">1000 - 100 + 1000 - 10 + 100 - 1 + 5 &#x3D; 1994</span><br></pre></td></tr></table></figure>
+
+<p>所以我們只需判斷 n+1 比 n 大還是小，就能判斷 n 的正負值。</p>
+<h2 id="程式："><a href="#程式：" class="headerlink" title="程式："></a>程式：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;string&#125;</span> <span class="variable">s</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> romanToInt = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> roman = &#123;</span><br><span class="line">        I: <span class="number">1</span>,</span><br><span class="line">        V: <span class="number">5</span>,</span><br><span class="line">        X: <span class="number">10</span>,</span><br><span class="line">        L: <span class="number">50</span>,</span><br><span class="line">        C: <span class="number">100</span>,</span><br><span class="line">        D: <span class="number">500</span>,</span><br><span class="line">        M: <span class="number">1000</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;s.length-<span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(roman[s[i]] &gt;= roman[s[i+<span class="number">1</span>]])&#123;</span><br><span class="line">            sum += roman[s[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            sum -= roman[s[i]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sum += roman[s[s.length-<span class="number">1</span>]];</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="複雜度"><a href="#複雜度" class="headerlink" title="複雜度"></a>複雜度</h1><p>時間複雜度：O(N)<br>空間複雜度：O(1)</p>
 
         </div>
 
@@ -238,33 +243,18 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/dayscss04/"
+                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode856/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 04 Loading</span>
+                                <span class="post-nav-title-item">[LeetCode] 856. Score of Parentheses 刷題筆記</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                         </a>
                     </div>
                 
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/dayscss08/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 08 Metaballs</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
                 
             </div>
         
@@ -372,7 +362,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Statistic-Demo"><span class="nav-number">1.</span> <span class="nav-text">Statistic Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">學習重點</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">題目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E9%A1%8C%E9%81%8E%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">解題過程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">程式：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">複雜度</span></a></li></ol>
     </div>
 </div>
         </aside>
