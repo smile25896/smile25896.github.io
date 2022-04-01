@@ -215,9 +215,9 @@
 
         <div class="article-content markdown-body">
             <h1 id="Menu-Icon-Demo"><a href="#Menu-Icon-Demo" class="headerlink" title="Menu Icon Demo"></a>Menu Icon Demo</h1><p class="codepen" data-height="482" data-theme-id="dark" data-default-tab="css,result" data-user="smile25896" data-slug-hash="PrJzEr" style="height: 482px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="100DaysCss #02 #plus">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/PrJzEr">
-  100DaysCss #02 #plus</a> by Cathy (<a target="_blank" rel="noopener" href="https://codepen.io/smile25896">@smile25896</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+  <span>See the Pen <a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/PrJzEr" >
+  100DaysCss #02 #plus<i class="fas fa-external-link-alt"></i></a> by Cathy (<a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896" >@smile25896<i class="fas fa-external-link-alt"></i></a>)
+  on <a class="link"   target="_blank" rel="noopener" href="https://codepen.io" >CodePen<i class="fas fa-external-link-alt"></i></a>.</span>
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
@@ -295,7 +295,7 @@
 <td>paused</td>
 </tr>
 </tbody></table>
-<p>完整說明可以參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Animations/Using_CSS_animations">這裡</a></p>
+<p>完整說明可以參考<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Animations/Using_CSS_animations" >這裡<i class="fas fa-external-link-alt"></i></a></p>
 <p>也能寫成縮寫：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">animation</span>:name duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;</span><br></pre></td></tr></table></figure>
 
@@ -314,9 +314,9 @@
 <p>由「X」變回「三」的動畫則是反過來就好了，不另贅述。</p>
 <h2 id="貝茲曲線：cubic-bezier"><a href="#貝茲曲線：cubic-bezier" class="headerlink" title="貝茲曲線：cubic-bezier"></a>貝茲曲線：<code>cubic-bezier</code></h2><h3 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h3><p>剛剛介紹的<code>animation-timing-function</code>動畫加速函式，如果沒有設定的話預設是<code>ease</code>，在動畫開頭先用比較緩和速度執行，之後漸漸加快直到動畫結尾再慢慢降下速度。視覺上會有「慢-快-慢」的效果。</p>
 <p>如果要讓「三」變成「X」時有快到慢的效果，而反過來當「X」變回「三」時則有慢到快的效果時，最簡單的方式是設定<code>ease-out</code>（漸出）與<code>ease-in</code>（漸入）。</p>
-<p>animation-timing-function完整的說明及參數可以參考<a target="_blank" rel="noopener" href="https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp">這裡</a></p>
+<p>animation-timing-function完整的說明及參數可以參考<a class="link"   target="_blank" rel="noopener" href="https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp" >這裡<i class="fas fa-external-link-alt"></i></a></p>
 <h3 id="cubic-bezier"><a href="#cubic-bezier" class="headerlink" title="cubic-bezier"></a>cubic-bezier</h3><p>若希望動畫的速度變化比<code>ease-out</code>、<code>ease-in</code>更強烈的話，就可以透過<code>cubic-bezier</code>手動設定動畫的加速度函式。<br>animation-timing-function預設的幾種加速函式畫成貝茲曲線圖會是這個樣子：<br><img src="/images/posts/dayscss02/01.png"></p>
-<p>貝茲曲線有兩個控制點，調整控制點的位置則可以讓我們畫出曲線<br><code>cubic-bezier(x1, y1, x2, y2)</code>：四個參數分別是(控制點1的x軸, 控制點1的y軸, 控制點2的x軸, 控制點2的y軸)<br>若不清楚控制點是什麼的人，建議可以到<a target="_blank" rel="noopener" href="https://cubic-bezier.com/">cubic-bezier.com</a>上玩玩看會更了解。</p>
+<p>貝茲曲線有兩個控制點，調整控制點的位置則可以讓我們畫出曲線<br><code>cubic-bezier(x1, y1, x2, y2)</code>：四個參數分別是(控制點1的x軸, 控制點1的y軸, 控制點2的x軸, 控制點2的y軸)<br>若不清楚控制點是什麼的人，建議可以到<a class="link"   target="_blank" rel="noopener" href="https://cubic-bezier.com/" >cubic-bezier.com<i class="fas fa-external-link-alt"></i></a>上玩玩看會更了解。</p>
 
         </div>
 
