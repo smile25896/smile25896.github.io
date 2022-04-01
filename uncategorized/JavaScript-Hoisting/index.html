@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Cathy P">
+    
+    <title>
+        
+            [JavaScript] Hoisting 為什麼在宣告前就可以使用？ |
+        
+        Cathy P
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"smile25896.github.io","root":"/","language":"zh-TW","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#61a3a3","highlight_color":"#ef5d40","avatar":"/images/avatar.png","favicon":"/images/logo.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分鐘前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Cathy P
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首頁
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                歸檔
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分類
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                標籤
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首頁</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">歸檔</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分類</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">標籤</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">[JavaScript] Hoisting 為什麼在宣告前就可以使用？</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Cathy P</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-03-29 23:56:22
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果在學習 JavaScript 之前學習過其他程式語言，應該都會發現 JavaScript 跟其他程式語言的其中一個不同之處：<span class="highlight_p">變數和 function 可以在宣告之前使用</span>。</p>
+<p>JavaScript 的 Hoisting 讓我可以在變數和 function 宣告前就使用它們，此篇文章將介紹 Hoisting 是什麼？以及它是如何運作的？如果你也曾對此感到好奇或困惑，請繼續閱讀！</p>
+<h1 id="Hoisting-是什麼"><a href="#Hoisting-是什麼" class="headerlink" title="Hoisting 是什麼?"></a>Hoisting 是什麼?</h1><p>在 JavaScript 中，如果我們試著對一個還沒有宣告過的變數取值，會得到以下的錯誤：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(variable); <span class="comment">// Uncaught ReferenceError: variable is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>但如果我們改成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(variable); <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> variable;</span><br></pre></td></tr></table></figure>
+
+<p>發現程式竟然不再報錯了，竟然順利執行且回傳了<code>undefined</code>！</p>
+<p>這種在宣告之前就可以使用變數的情況就叫做「Hoisting 提升」，宣告變數 <code>var variable;</code> 的這行看起來被挪到了程式的上面，像是這樣：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> variable;</span><br><span class="line"><span class="built_in">console</span>.log(variable); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>雖然 Hoisting 看起來挪動了宣告變數的程式碼，實質上程式碼的位置並不會移動，而是是在編譯階段經過處理的達成這種效果的。為了方便講解，我仍然繼續用「宣告變數的程式碼被挪到上方」來稱呼這個行為。</p>
+</blockquote>
+<hr>
+<p>另外，會被挪到程式碼上方的，僅有「宣告變數」的部分，但 Initialization 初始化的部分並不會提升。<br>所以下面的程式印出的仍然是 <code>undefined</code> 而不是 <code>100</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(variable); <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> variable = <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+
+<p>因為 Hoisting，上面的程式碼可以看作成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> variable;</span><br><span class="line"><span class="built_in">console</span>.log(variable); <span class="comment">// undefined</span></span><br><span class="line">variable = <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+
+<p>只有宣告變數的地方被提升了，賦值的程式碼仍然在 <code>console.log(varaible);</code> 的下一行才執行，所以印出的自然是 <code>undefined</code>。</p>
+<p>除了變數宣告會被提升之外，function 宣告也同樣會被提升，所以我們可以在 function 被宣告之前就呼叫 function。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hello(); <span class="comment">// &quot;Hello World!&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是只有 function declaration（函式宣告）會被提升，<span class="highlight_p">function expression（函式表達式）是不會被提升的。</span></p>
+<p>所以剛剛的例子如果寫成 function expression，則會引發錯誤：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hello(); <span class="comment">// Uncaught TypeError: hello is not a function</span></span><br><span class="line"><span class="keyword">var</span> hello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>因為只有宣告會被提升，看起來像是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> hello;</span><br><span class="line">hello(); <span class="comment">// Uncaught TypeError: hello is not a function</span></span><br><span class="line">hello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Function-內的-Hoisting"><a href="#Function-內的-Hoisting" class="headerlink" title="Function 內的 Hoisting"></a>Function 內的 Hoisting</h1><p>了解了 Hoisting 的基本定義與原理之後，我們在接著看 function 內的 hoisting 的運作。</p>
+<p>之前宣告的變數都是在 function 外，宣告會被提升到 global scope 的最上面。<br>而 function 內宣告的變數則會提升到 <strong>function scope</strong> 的最上面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">&quot;Yuju&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">callName(); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>將宣告變數的地方提升到 function scope 的最上面，因為 hoisting 我們可以看成是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">  name = <span class="string">&quot;Yuju&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">callName(); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>接著看下一個例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">&#125;</span><br><span class="line">callName(<span class="string">&quot;Yerin&quot;</span>); <span class="comment">// &quot;Yerin&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>這個程式碼雖然沒有很明確的用一行 <code>var name;</code> 來宣告變數，但參數本身也可以看成是一個宣告變數的過程，加上把參數傳進去的過程，我們可以想像成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name;</span><br><span class="line">  name = <span class="string">&quot;Yerin&quot;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">&#125;</span><br><span class="line">callName(<span class="string">&quot;Yerin&quot;</span>); <span class="comment">// &quot;Yerin&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>再來我們看一個變化題：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">&quot;Sowon&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">callName(<span class="string">&quot;Yerin&quot;</span>); <span class="comment">// &quot;Yerin&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>按照之前說的，將宣告變數的程式碼挪到上面，<code>name = &quot;Sowon&quot;;</code> 仍留在原地，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name;</span><br><span class="line">  <span class="keyword">var</span> name;</span><br><span class="line">  name = <span class="string">&quot;Yerin&quot;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">  name = <span class="string">&quot;Sowon&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">callName(<span class="string">&quot;Yerin&quot;</span>); <span class="comment">// &quot;Yerin&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>雖然 <code>name = &quot;Sowon&quot;;</code> 在 <code>console.log(name);</code> 之後，但參數傳進來時本身就賦值了，所以印出的會是<code>Yerin</code>而不是<code>undefined</code>。</p>
+<h1 id="Function-宣告與變數宣告的優先權"><a href="#Function-宣告與變數宣告的優先權" class="headerlink" title="Function 宣告與變數宣告的優先權"></a>Function 宣告與變數宣告的優先權</h1><p>如果有 function 和變數同名，function 的優先權比較高，如果有多個 function 重名，後面的 function 會取代前面的 function。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(hello); <span class="comment">// fn hello()&#123;&#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> hello;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(hello); <span class="comment">// ƒ hello() &#123;console.log(&quot;hello&quot;)&#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hello;</span><br></pre></td></tr></table></figure>
+
+<h1 id="let-和-const-的-Hoisting"><a href="#let-和-const-的-Hoisting" class="headerlink" title="let 和 const 的 Hoisting"></a>let 和 const 的 Hoisting</h1><p>在寫這篇文章之前，我一直以為使用 let 和 const 宣告的變數，並不會被提升。<br>我們在執行以下程式碼的時候，也會發現變數看起來並沒有被提升而引發了報錯：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// Uncaught ReferenceError: variable is not defined</span></span><br><span class="line"><span class="keyword">let</span> a;</span><br></pre></td></tr></table></figure>
+
+<p>但事實上並非如此，使用 let 和 const 宣告的變數一樣會被提升到 scope 的最上面，只是和用 var 宣告的變數不一樣，使用 let 和 const 宣告的變數並未被初始化（Initialization），所以在賦值之前並不能使用。</p>
+<p>我們可以透過下面的程式碼來佐證：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;SinB&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">  <span class="keyword">let</span> name;</span><br><span class="line">&#125;</span><br><span class="line">hello();</span><br></pre></td></tr></table></figure>
+
+<p>我們推演一下 let 不會被提升的情況， <code>let name;</code> 宣告在 <code>console.log(name)</code> 之後且我們假設不會被提升，所以照理來說第三行的 <code>console.log(name);</code> 應該會存取到第一行的 <code>var name = &quot;SinB;&quot;</code> 而印出 <code>&quot;SinB&quot;</code>。</p>
+<p>但實際上系統會報出 <code>Uncaught ReferenceError: Cannot access &#39;name&#39; before initialization</code>的錯誤訊息。</p>
+<p>所以實際上，let 和 const 宣告的變數也是會被提升的，只是在賦值我們不能使用它，才會有看起來不會被提升的錯覺。</p>
+<h2 id="Temporal-dead-zone（暫時死區）"><a href="#Temporal-dead-zone（暫時死區）" class="headerlink" title="Temporal dead zone（暫時死區）"></a>Temporal dead zone（暫時死區）</h2><p>在 let 和 const 宣告的變數之後、賦值之前，變數不可取用的那個期間，我們稱作 <strong>Temporal dead zone</strong><br>如果在 TDZ 的期間存取變數，則會發生 <code>ReferenceError</code> 的錯誤。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 變數 gender 的 TDZ 開始</span></span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">&quot;Umji&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">  <span class="built_in">console</span>.log(gender); <span class="comment">// 仍在 TDZ 期間所以發生 ReferenceError 錯誤</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> gender = <span class="string">&quot;female&quot;</span>; <span class="comment">// 變數 gender 的 TDZ 結束</span></span><br><span class="line">&#125;</span><br><span class="line">hello(); <span class="comment">// Uncaught ReferenceError: Cannot access &#x27;gender&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
+
+<p>function 中的預設參數也會有 TDZ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">a = b, b = <span class="string">&quot;Eunha&quot;</span></span>) </span>&#123;&#125;</span><br><span class="line">hello(); <span class="comment">// Uncaught ReferenceError: Cannot access &#x27;b&#x27; before initialization</span></span><br></pre></td></tr></table></figure>
+
+<p>因為在變數 b 的 TDZ 期間嘗試取值所以發生了錯誤。</p>
+<h2 id="Typeof"><a href="#Typeof" class="headerlink" title="Typeof"></a>Typeof</h2><p>在 JavaScript 中，我們可以使用 Typeof 來檢查變數是否被宣告。</p>
+<p>所以在下面程式碼的情況下，雖然我們沒有宣告過 a，但只會回傳 undefined 而不會發生錯誤。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>第二個例子，變數宣告會被提升到上方，但賦值的程式碼仍維持在下方，程式一樣是回傳 undefined：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;apple&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果改成使用 let 宣告，則會因為在 TDZ 的期間引發錯誤：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 變數 a 的 TDZ 開始</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// 仍在 TDZ 期間所以發生 ReferenceError 錯誤</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">&quot;apple&quot;</span>; <span class="comment">// 變數 a 的 TDZ 結束</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Hoisting-的用途"><a href="#Hoisting-的用途" class="headerlink" title="Hoisting 的用途"></a>Hoisting 的用途</h1><ol>
+<li><strong>在宣告之前取用變數</strong><br>但這其實不是一個好的習慣，雖然有 Hoisting 但我們仍要避免在宣告變數前取用變數。<br>甚至我們應該盡量使用 let 與 const，而不是用 var 來宣告變數。</li>
+<li><strong>在 function 宣告之前呼叫 function</strong><br>這點來說幫助就非常大了，很多時候我們習慣把 function 宣告放在下方。</li>
+<li><strong>讓 function 可以互相呼叫</strong><br>如果 function 之間沒辦法呼叫，function 互相呼叫程式就沒辦法執行：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  check(++a, ++b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (a + b &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    add(a, b);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a, b);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>先簡單做個重點整理：</p>
+<ol>
+<li>var 宣告會被提升。</li>
+<li>Initialization 的部分不會被提升。</li>
+<li>let 和 const 雖然會被提升，但賦值之前無法取值。</li>
+<li>function declaration 會被提升，而 function expression 不會。</li>
+<li>function 與變數同名，function 優先。</li>
+</ol>
+<p>在寫這篇文章之前，我對 Hoisting 的認識只有「用 var 宣告會提升，而用 let 和 const 不會提升。」這樣粗淺的認識。</p>
+<p>仔細研究之後，才發現 Hoisting 的運作其實大有文章，有非常多的細節在其中，比我原本想像中的複雜許多。</p>
+<p>經過一番瞭解與消化後，才整理出這篇文章，希望對正在讀這篇文章的你有幫助。第一次打一篇比較正式的 js 文章，如果有任何錯誤，也煩請指正，謝謝。</p>
+<br/>
+參考資料：
+
+<ol>
+<li><a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/Hoisting" >MDN: Hoisting<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript" >Understanding Hoisting in JavaScript<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/what-is-hoisting-in-javascript/" >What is Hoisting in JavaScript?<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://blog.techbridge.cc/2018/11/10/javascript-hoisting/" >我知道你懂 hoisting，可是你了解到多深？<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E7%A8%8B%E5%BC%8F%E8%A7%A3%E9%A1%8C/leetcode13/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">[LeetCode] 13. Roman to Integer</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Cathy P</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 啟動&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hoisting-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="nav-number">2.</span> <span class="nav-text">Hoisting 是什麼?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Function-%E5%85%A7%E7%9A%84-Hoisting"><span class="nav-number">3.</span> <span class="nav-text">Function 內的 Hoisting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Function-%E5%AE%A3%E5%91%8A%E8%88%87%E8%AE%8A%E6%95%B8%E5%AE%A3%E5%91%8A%E7%9A%84%E5%84%AA%E5%85%88%E6%AC%8A"><span class="nav-number">4.</span> <span class="nav-text">Function 宣告與變數宣告的優先權</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-%E5%92%8C-const-%E7%9A%84-Hoisting"><span class="nav-number">5.</span> <span class="nav-text">let 和 const 的 Hoisting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Temporal-dead-zone%EF%BC%88%E6%9A%AB%E6%99%82%E6%AD%BB%E5%8D%80%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">Temporal dead zone（暫時死區）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Typeof"><span class="nav-number">5.2.</span> <span class="nav-text">Typeof</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hoisting-%E7%9A%84%E7%94%A8%E9%80%94"><span class="nav-number">6.</span> <span class="nav-text">Hoisting 的用途</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">7.</span> <span class="nav-text">總結</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜尋..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+    <script src="/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>

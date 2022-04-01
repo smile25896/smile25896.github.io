@@ -16,8 +16,14 @@
 }
 .markdown-body p {
   line-height: 1.65;
-  margin: 1.25rem 0;
+  margin: 1rem 0;
   color: var(--default-text-color);
+}
+.markdown-body hr {
+  margin-block-start: 2em;
+  margin-block-end: 2em;
+  border-top: 1px solid var(--second-background-color);
+  border-left: 1px solid var(--second-background-color);
 }
 .markdown-body a {
   position: relative;
@@ -46,7 +52,7 @@
 .markdown-body strong {
   color: var(--default-text-color);
 }
-.markdown-body span.highlight {
+.markdown-body span.highlight_p {
   color: var(--highlight-color);
   font-weight: bolder;
 }

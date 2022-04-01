@@ -2,6 +2,7 @@
   --background-color: #fff;
   --second-background-color: #f7f7f7;
   --primary-color: #61a3a3;
+  --highlight-color: #ef5d40;
   --primary-background-color: #8dc2c2;
   --first-text-color: #484853;
   --second-text-color: #4c4c57;
@@ -24,6 +25,7 @@
     --background-color: #fff;
     --second-background-color: #f7f7f7;
     --primary-color: #61a3a3;
+    --highlight-color: #ef5d40;
     --primary-background-color: #8dc2c2;
     --first-text-color: #484853;
     --second-text-color: #4c4c57;
@@ -47,6 +49,7 @@
     --background-color: #383940;
     --second-background-color: #32333a;
     --primary-color: #61a3a3;
+    --highlight-color: #f27d66;
     --primary-background-color: #529999;
     --first-text-color: #d2d2d7;
     --second-text-color: #cbcbd1;
@@ -69,6 +72,7 @@
   --background-color: #fff;
   --second-background-color: #f7f7f7;
   --primary-color: #61a3a3;
+  --highlight-color: #ef5d40;
   --primary-background-color: #8dc2c2;
   --first-text-color: #484853;
   --second-text-color: #4c4c57;
@@ -90,6 +94,7 @@
   --background-color: #383940;
   --second-background-color: #32333a;
   --primary-color: #61a3a3;
+  --highlight-color: #f27d66;
   --primary-background-color: #529999;
   --first-text-color: #d2d2d7;
   --second-text-color: #cbcbd1;
@@ -110,35 +115,37 @@
 :root {
   --code-foreground: #535360;
   --code-background: #f2f2f2;
-  --highlight-background: #fafafa;
-  --highlight-foreground: #535360;
-  --highlight-comment: #8e908c;
-  --highlight-red: #c82829;
-  --highlight-orange: #f5871f;
-  --highlight-yellow: #eab700;
-  --highlight-green: #718c00;
-  --highlight-aqua: #3e999f;
-  --highlight-blue: #4271ae;
-  --highlight-purple: #8959a8;
-  --highlight-gutter-color: #585865;
-  --highlight-gutter-bg-color: #f2f2f2;
+  --highlight-background: #34343b;
+  --highlight-foreground: #bfbfc7;
+  --highlight-comment: #969896;
+  --highlight-red: #c66;
+  --highlight-orange: #de935f;
+  --highlight-yellow: #f0c674;
+  --highlight-green: #b5bd68;
+  --highlight-aqua: #8abeb7;
+  --highlight-blue: #81a2be;
+  --highlight-purple: #b294bb;
+  --highlight-gutter-color: #c1c1c9;
+  --highlight-gutter-bg-color: #32333a;
+  --highlight-text-color: #bebec6;
 }
 @media (prefers-color-scheme: light) {
   :root {
     --code-foreground: #535360;
     --code-background: #f2f2f2;
-    --highlight-background: #fafafa;
-    --highlight-foreground: #535360;
-    --highlight-comment: #8e908c;
-    --highlight-red: #c82829;
-    --highlight-orange: #f5871f;
-    --highlight-yellow: #eab700;
-    --highlight-green: #718c00;
-    --highlight-aqua: #3e999f;
-    --highlight-blue: #4271ae;
-    --highlight-purple: #8959a8;
-    --highlight-gutter-color: #585865;
-    --highlight-gutter-bg-color: #f2f2f2;
+    --highlight-background: #34343b;
+    --highlight-foreground: #bfbfc7;
+    --highlight-comment: #969896;
+    --highlight-red: #c66;
+    --highlight-orange: #de935f;
+    --highlight-yellow: #f0c674;
+    --highlight-green: #b5bd68;
+    --highlight-aqua: #8abeb7;
+    --highlight-blue: #81a2be;
+    --highlight-purple: #b294bb;
+    --highlight-gutter-color: #c1c1c9;
+    --highlight-gutter-bg-color: #32333a;
+    --highlight-text-color: #bebec6;
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -157,23 +164,25 @@
     --highlight-purple: #b294bb;
     --highlight-gutter-color: #c1c1c9;
     --highlight-gutter-bg-color: #32333a;
+    --highlight-text-color: #bebec6;
   }
 }
 .light-mode {
   --code-foreground: #535360;
   --code-background: #f2f2f2;
-  --highlight-background: #fafafa;
-  --highlight-foreground: #535360;
-  --highlight-comment: #8e908c;
-  --highlight-red: #c82829;
-  --highlight-orange: #f5871f;
-  --highlight-yellow: #eab700;
-  --highlight-green: #718c00;
-  --highlight-aqua: #3e999f;
-  --highlight-blue: #4271ae;
-  --highlight-purple: #8959a8;
-  --highlight-gutter-color: #585865;
-  --highlight-gutter-bg-color: #f2f2f2;
+  --highlight-background: #34343b;
+  --highlight-foreground: #bfbfc7;
+  --highlight-comment: #969896;
+  --highlight-red: #c66;
+  --highlight-orange: #de935f;
+  --highlight-yellow: #f0c674;
+  --highlight-green: #b5bd68;
+  --highlight-aqua: #8abeb7;
+  --highlight-blue: #81a2be;
+  --highlight-purple: #b294bb;
+  --highlight-gutter-color: #c1c1c9;
+  --highlight-gutter-bg-color: #32333a;
+  --highlight-text-color: #bebec6;
 }
 .dark-mode {
   --code-foreground: #bfbfc7;
@@ -190,6 +199,7 @@
   --highlight-purple: #b294bb;
   --highlight-gutter-color: #c1c1c9;
   --highlight-gutter-bg-color: #32333a;
+  --highlight-text-color: #bebec6;
 }
 pre,
 .highlight {
@@ -268,13 +278,13 @@ pre code {
 }
 .highlight .line {
   height: 20px;
-  color: var(--default-text-color);
+  color: var(--highlight-text-color);
 }
 .highlight .line .attr {
-  color: var(--default-text-color);
+  color: var(--highlight-text-color);
 }
 .highlight .line .string {
-  color: var(--default-text-color);
+  color: var(--highlight-text-color);
 }
 .gutter {
   -webkit-user-select: none;
