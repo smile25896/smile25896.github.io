@@ -1,0 +1,13 @@
+# hexo robots.txt
+User-agent: *
+Allow: /前端
+Allow: /程式解題
+Allow: /archives
+Allow: /categories/
+Allow: /tags/
+
+# Disallow: /js/
+# Disallow: /css/
+# Disallow: /webfont/
+
+Sitemap: https://smile25896.github.io/sitemap.xml
