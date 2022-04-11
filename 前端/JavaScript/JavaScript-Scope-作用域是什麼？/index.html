@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta
+    name="google-site-verification"
+    content="3N5RUlhIgmdlBVXvoXMhg6OVkFQ5ujnDihRqoCZ8aYM"
+  />
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  />
+  <meta name="keywords" content="Hexo Theme Keep" />
+  <meta
+    name="description"
+    content="Hexo Theme Keep"
+  />
+  <meta
+    name="author"
+    content="Cathy P"
+  />
+  
+  <title>
+     [JavaScript] Scope 作用域是什麼？ |  Cathy P
+  </title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="shortcut icon" href="/images/logo.png"> <link rel="stylesheet" href="/css/font-awesome.min.css"> <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"smile25896.github.io","root":"/","language":"zh-TW","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#61a3a3","highlight_color":"#ef5d40","avatar":"/images/avatar.png","favicon":"/images/logo.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分鐘前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Cathy P
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首頁
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                歸檔
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分類
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                標籤
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首頁</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">歸檔</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分類</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">標籤</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">[JavaScript] Scope 作用域是什麼？</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Cathy P</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-04-02 22:16:42
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Javascript/">Javascript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="Scope-是什麼？"><a href="#Scope-是什麼？" class="headerlink" title="Scope 是什麼？"></a>Scope 是什麼？</h1><p>Scope 中文翻作「作用域/範疇…」代表了變數可以被取用的範圍，如果嘗試在 scope 外存取變數，就會發生錯誤。</p>
+<p>下面的範例就是因為在 <code>localText</code> 的 scope 外存取 <code>localText</code> ，所以發生了錯誤。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> localText = <span class="string">&quot;Hello Function!&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(localText); <span class="comment">// Uncaught ReferenceError: localText is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>那麼 Scope 的範圍有哪幾種呢？</p>
+<ol>
+<li>Global Scope：在任何地方都能存取此變數。</li>
+<li>Function Scope：在 function 內部能存取此變數。</li>
+<li>Block Scope：在 block{}內部能存取此變數。</li>
+<li>Module Scope：</li>
+</ol>
+<h1 id="向外找的特性"><a href="#向外找的特性" class="headerlink" title="向外找的特性"></a>向外找的特性</h1><p>知道變數的 Scope 範圍，有助於幫我們判斷現在存取的變數究竟是誰。</p>
+<p>在區域範圍內時，可以讀到自己區域的變數以及外面區域的變數，但全域的地方無法讀到區域的變數。</p>
+<blockquote>
+<p>為了幫助理解以下的程式，在這邊先知道用 <code>var</code> 宣告的變數，若在 function 外宣告，作用域為 global；在 function 內宣告，作用域在 function 內。<br>後面會有更詳細的介紹。</p>
+</blockquote>
+<p>看一下這個範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> globalVariable = <span class="string">&quot;G&quot;</span>; <span class="comment">// 作用域為全域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> localVariable = <span class="string">&quot;L&quot;</span>; <span class="comment">// 作用域在 test() 內</span></span><br><span class="line">  <span class="built_in">console</span>.log(globalVariable); <span class="comment">// &quot;G&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="built_in">console</span>.log(localVariable); <span class="comment">// Uncaught ReferenceError: localVariable is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>在 <code>test()</code> 內可以讀到外面的 <code>globalVariable</code> ，但 global 區域沒辦法讀到 <code>test()</code> 內的變數，因此會報錯。</p>
+<p>所以簡單來說在存取變數的時候，會先在區域內找這個變數，如果找不到再向外面一層找。</p>
+<hr>
+<p>如果變數有重名的情況，會先在小區域找，找不到的話才會再往外找：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> username = <span class="string">&quot;Cathy&quot;</span>; <span class="comment">// 作用域為全域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> username = <span class="string">&quot;Winni&quot;</span>; <span class="comment">// 作用域在 callName() 裡面</span></span><br><span class="line">  <span class="built_in">console</span>.log(username); <span class="comment">// &quot;Winni&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">callName();</span><br><span class="line"><span class="built_in">console</span>.log(username); <span class="comment">// &quot;Cathy&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>第一個 <code>console.log</code> 在 <code>callName()</code> 內找得到 <code>username</code> 這個變數，所以印出 <code>&quot;Winni&quot;</code>。</p>
+<p>第二個 <code>console.log</code> 在 <code>callName()</code> 外面，不會往 <code>callName</code> 內讀取變數，所以他印出外面的全域變數 <code>&quot;Cathy&quot;</code> 。</p>
+<hr>
+<p>如果有多個 function 也是一樣，會先在小區域找，找不到的話再往外找：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> username = <span class="string">&quot;Cathy&quot;</span>; <span class="comment">// 作用域為全域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> username = <span class="string">&quot;Winni&quot;</span>; <span class="comment">// 作用域在 callName() 裡面</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(username); <span class="comment">// &quot;Winni&quot;;</span></span><br><span class="line">  &#125;</span><br><span class="line">  test();</span><br><span class="line">&#125;</span><br><span class="line">callName();</span><br></pre></td></tr></table></figure>
+
+<p>這個範例，<code>test()</code> 裡面找不到 <code>username</code> ，所以向外一層在 <code>callName()</code> 中找到了，印出 <code>Winni</code>。</p>
+<hr>
+<p>接下來出一個小題目，讓大家自己判斷一下 <code>console.log</code> 會印出什麼呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> username = <span class="string">&quot;Cathy&quot;</span>; <span class="comment">// 作用域為全域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> username = <span class="string">&quot;Winni&quot;</span>; <span class="comment">// 作用域在 callName() 裡面</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> username = <span class="string">&quot;Joy&quot;</span>; <span class="comment">// 作用域在 test() 裡面</span></span><br><span class="line">    <span class="built_in">console</span>.log(username);</span><br><span class="line">  &#125;</span><br><span class="line">  test();</span><br><span class="line">&#125;</span><br><span class="line">callName();</span><br></pre></td></tr></table></figure>
+
+<p>.<br>.<br>.<br>.<br>.<br>答案是：<code>&quot;Joy&quot;</code></p>
+<p>因為 <code>test()</code> function 本身就找得到 <code>username</code>，所以印出來的就是宣告在 <code>test()</code> 裡的 <code>username</code>，其值為 <code>&quot;Joy&quot;</code>。</p>
+<hr>
+<p>第二題小測驗</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> username = <span class="string">&quot;Cathy&quot;</span>; <span class="comment">// 作用域為全域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> username = <span class="string">&quot;Winni&quot;</span>; <span class="comment">// 作用域在 callName() 裡面</span></span><br><span class="line">  <span class="built_in">console</span>.log(username);</span><br><span class="line">&#125;</span><br><span class="line">username = <span class="string">&quot;Frank&quot;</span>;</span><br><span class="line">callName();</span><br></pre></td></tr></table></figure>
+
+<p>.<br>.<br>.<br>.<br>.<br>答案是：<code>&quot;Winni&quot;</code></p>
+<p>第六行修改的 <code>username</code> 為全域變數的 <code>username</code>，而非宣告在 <code>callName()</code> 裡的 <code>username</code>，所以 <code>callName()</code> 裡的 <code>username</code> 值不會改變。</p>
+<p>而 <code>console.log</code> 在 <code>call()</code> 中找得到 <code>username</code> ，所以會印出 <code>Winni</code>。</p>
+<hr>
+<p>第三題小測驗</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> username = <span class="string">&quot;Cathy&quot;</span>; <span class="comment">// 作用域為全域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  username = <span class="string">&quot;Winni&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">callName();</span><br><span class="line"><span class="built_in">console</span>.log(username);</span><br></pre></td></tr></table></figure>
+
+<p>.<br>.<br>.<br>.<br>.<br>答案是：<code>Winni</code></p>
+<p><code>callName()</code> 中找不到 <code>username</code> ，所以他向外一層找到了全域作用域的 <code>username</code> ，並將其值修改成 <code>Winni</code>，因此 <code>console.log</code> 印出來的值為被修改過的 <code>Winni</code>。</p>
+<p>從上面幾個範例，只要我們知道變數的作用域是哪裡，就能判斷存取的變數究竟是哪個變數了。</p>
+<p>但是，我們要怎麼知道變數的作用域是哪裡呢？</p>
+<h1 id="用-var-宣告變數"><a href="#用-var-宣告變數" class="headerlink" title="用 var 宣告變數"></a>用 var 宣告變數</h1><p>如果在 function 外用 <code>var</code> 宣告的變數，那麼該變數就是的 scope 是 global，在任何地方都能存取。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> group = <span class="string">&quot;GFRIEND&quot;</span>; <span class="comment">// 作用域為全域</span></span><br><span class="line"><span class="built_in">console</span>.log(group); <span class="comment">// &quot;GFRIEND&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (group) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(group); <span class="comment">// &quot;GFRIEND&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(group); <span class="comment">// &quot;GFRIEND&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>如果在 function 內用 <code>var</code> 宣告的變數，那麼該變數的 scope 是 function，在 function 內部才能存取。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> group = <span class="string">&quot;VIVIZ&quot;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(group); <span class="comment">// &quot;VIVIZ&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">getName();</span><br><span class="line"><span class="built_in">console</span>.log(group); <span class="comment">// Uncaught ReferenceError: group is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>第二個 <code>console.log</code> 因為無法讀取到 function 內部宣告的變數，所以會報錯。</p>
+<h2 id="Function-Scope-的問題"><a href="#Function-Scope-的問題" class="headerlink" title="Function Scope 的問題"></a>Function Scope 的問題</h2><p><strong>問題一：範圍太大，可能無意間造成覆蓋。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="number">20</span>;</span><br><span class="line">  <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(count); <span class="comment">// 0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(count); <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<p>雖然上面的程式碼看起來是宣告了兩個變數，但因為是在同一個 function scope 內宣告兩次 <code>count</code> 變數，因此兩個變數實際上是同一個變數，在修改 <code>if</code> 裡面的 <code>count</code> 值時，外面的 <code>count</code> 同時也被修改了。</p>
+<p>這顯然不太符合我們的預期。</p>
+<p><strong>問題二：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>正常我們應該預期結果要印出 1,2,3,4,5，但實際上會印出 5,5,5,5,5。</p>
+<p>因為我們以為，程式是這樣運作的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">5</span>);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但實際上卻是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (...)&#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因為 <code>i</code> 這個變數不在 function 裡面宣告，所以是 global 範圍的變數。當 <code>setTimeout()</code> function 倒數完一秒要印出 <code>i</code> 時， 是迴圈跑完的時候， <code>i</code> 的值已經變成了 <code>5</code>。</p>
+<p>諸如此類的問題，讓我們使用起來有些不便，到了 ES6 之後，新增了 block scope 的概念。</p>
+<h1 id="用-let-和-const-宣告的變數"><a href="#用-let-和-const-宣告的變數" class="headerlink" title="用 let 和 const 宣告的變數"></a>用 let 和 const 宣告的變數</h1><p>在 ES6 版本，有了新的宣告變數的方式： <code>let</code> 和 <code>const</code>，使用這兩種方式會以 block 來區分作用域的範圍，也就是用 <code>&#123;&#125;</code> 來區分的意思。</p>
+<p>在 block 之外使用 <code>let</code> 和 <code>const</code> 宣告的變數，如同在 function 外使用 <code>var</code> 宣告的變數一樣，都是 global scope 的，在任何地方都能使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> count = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(count); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(count);</span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>在 block 內用 <code>let</code> 和 <code>const</code> 宣告的變數，scope 為 block 內部。</p>
+<p>修改 <code>&#123;&#125;</code> 內的 <code>name</code> ，並不會影響到外面的 <code>name</code> ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;John&quot;</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">&quot;Kevin&quot;</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(name); <span class="comment">// &quot;Aden&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// &quot;Kevin&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>更常的情況，我們會應用在 <code>if</code> 判斷式或是 <code>for</code> 等迴圈裡。</p>
+<blockquote>
+<p>判斷是和迴圈的括號也算在 block 的範圍內，像是 <code>for(let i=0; i&lt;10; i++)&#123;&#125;</code> 的 <code>i</code> 。</p>
+</blockquote>
+<p>block 內用 <code>let</code> 宣告的變數，不會影響到 block 外的變數。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> count = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(count); <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(count); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>在同一個 block scope 用 <code>let</code> 或 <code>const</code> 重複宣告變數的話，會發生錯誤：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(count); <span class="comment">// 0</span></span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">1</span>; <span class="comment">// Uncaught SyntaxError: Identifier &#x27;count&#x27; has already been declared</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>如果是在迴圈裡用 <code>let</code> 或 <code>const</code> 宣告變數的話，每一次迴圈的是一次新的 block scope。</p>
+<p>所以在迴圈裡宣告變數，並不會算重複宣告變數：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>會印出五次 <code>0</code> 。</p>
+<hr>
+<p>也可以解決上面用 <code>var</code> 宣告的問題二，原本的程式是這樣：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>會印出 <code>2,2</code></p>
+<p>但我們改成用 <code>let</code> 宣告的話，就可以正常印出 <code>0, 1</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這個例子我其實理解了很久才懂，因為每一次迴圈都是新的 block scope，所以 <code>i</code> 的值並不會被修改到。</p>
+<p>迴圈跑第一次的時候程式看起來像是這樣：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (...) &#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>; <span class="comment">// 第一次迴圈，所以 i 拿到 for 條件裡設定的 0 。</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">  i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二次則會變成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (...) &#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">1</span>; <span class="comment">// 第二次迴圈，所以依據條件上一次迴圈最後 i 的值 。</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">5000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>兩次迴圈的 <code>i</code>，是獨立互不相干擾的變數，所以就能正常的印出 <code>1, 2</code>。</p>
+<h1 id="靜態作用域"><a href="#靜態作用域" class="headerlink" title="靜態作用域"></a>靜態作用域</h1><p>在討論靜態作用域之前，大家先來思考一下，在哪裡呼叫 function，會不會影響到變數的值？</p>
+<p>我們看下面這個範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Cathy&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callName</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">&quot;Winni&quot;</span>;</span><br><span class="line">  callName();</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<p>我們在 <code>callName()</code> 裡面找不到 <code>name</code> 變數，所以要向外一層找找看有沒有 <code>name</code>。</p>
+<p>那麼這個外面一層，究竟是定義 function 時的外面 —— 也就是 global 區域，還是呼叫 function 時的外面 —— 也就是 <code>test()</code> 區域呢？</p>
+<p>答案是 global 區域，所以 <code>console.log(name)</code> 印出來應為 <code>&quot;Cathy&quot;</code> 。</p>
+<p>因為在撰寫時變數的作用域就已經確定好了，所以稱之為「靜態作用域」。</p>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>關於 scope 這個主題，原本處於一個大概知道在做什麼的了解，但仔細要寫起來，也發現了一些原本沒有注意到的細節。像是「靜態作用域」就是在寫這篇文章時，第一次學到的知識。</p>
+<p>這篇文章來來回回改了很多遍，因為總是會有沒有先講Ａ介紹Ｂ的時候會不清楚，但沒有先講Ｂ介紹Ａ也會有點模糊等雞生蛋蛋生雞的問題，希望我最後呈現的內容能讓人好懂。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E5%89%8D%E7%AB%AF/JavaScript/JavaScript-Hoisting/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">[JavaScript] Hoisting 為什麼在宣告前就可以使用？</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Cathy P</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 啟動&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Scope-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">Scope 是什麼？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%91%E5%A4%96%E6%89%BE%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">向外找的特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8-var-%E5%AE%A3%E5%91%8A%E8%AE%8A%E6%95%B8"><span class="nav-number">3.</span> <span class="nav-text">用 var 宣告變數</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Scope-%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="nav-number">3.1.</span> <span class="nav-text">Function Scope 的問題</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8-let-%E5%92%8C-const-%E5%AE%A3%E5%91%8A%E7%9A%84%E8%AE%8A%E6%95%B8"><span class="nav-number">4.</span> <span class="nav-text">用 let 和 const 宣告的變數</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%9C%E6%85%8B%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">5.</span> <span class="nav-text">靜態作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">6.</span> <span class="nav-text">總結</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜尋..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/header-shrink.js"></script><script src="/js/back2top.js"></script><script src="/js/dark-light-toggle.js"></script>
+
+
+    <script src="/js/local-search.js"></script>
+
+
+
+    <script src="/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="/js/left-side-toggle.js"></script><script src="/js/libs/anime.min.js"></script><script src="/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
