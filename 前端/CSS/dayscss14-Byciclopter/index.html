@@ -21,7 +21,7 @@
   />
   
   <title>
-     [CSS100] Day 11 Walking Boots |  Cathy P
+     [CSS100] Day 14 Byciclopter |  Cathy P
   </title>
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="shortcut icon" href="/images/logo.png"> <link rel="stylesheet" href="/css/font-awesome.min.css"> <script id="hexo-configurations">
@@ -154,7 +154,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">[CSS100] Day 11 Walking Boots</span>
+            <span class="title-hover-animation">[CSS100] Day 14 Byciclopter</span>
         </div>
 
         
@@ -170,7 +170,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-04-13 23:18:21
+        <i class="fas fa-edit"></i>&nbsp;2022-04-18 19:03:21
     </span>
     
         <span class="article-categories article-meta-item">
@@ -221,31 +221,45 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Walking-Boots-Demo"><a href="#Walking-Boots-Demo" class="headerlink" title="Walking Boots Demo"></a>Walking Boots Demo</h1><p class="codepen" data-height="482" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="poRzeNa" data-user="smile25896" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/poRzeNa" >
-  CSS100Days 011<i class="fas fa-external-link-alt"></i></a> by Cathy (<a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896" >@smile25896<i class="fas fa-external-link-alt"></i></a>)
+            <h1 id="Byciclopter-Demo"><a href="#Byciclopter-Demo" class="headerlink" title="Byciclopter Demo"></a>Byciclopter Demo</h1><p class="codepen" data-height="482" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="JjMayLj" data-user="smile25896" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896/pen/JjMayLj" >
+  014 - Byciclopter<i class="fas fa-external-link-alt"></i></a> by Cathy (<a class="link"   target="_blank" rel="noopener" href="https://codepen.io/smile25896" >@smile25896<i class="fas fa-external-link-alt"></i></a>)
   on <a class="link"   target="_blank" rel="noopener" href="https://codepen.io" >CodePen<i class="fas fa-external-link-alt"></i></a>.</span>
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-<p>這次的主題是要模擬鞋子走路的動畫，關於 css 動畫的語法介紹，可以參考這篇 <a href="/%E5%89%8D%E7%AB%AF/CSS/CSS100/dayscss02">[CSS100] Day 02 Menu Icon</a>。</p>
-<p>這題就像是應用題，我們之前學過怎麼做動畫了，那麼該怎麼模擬走路的樣子呢？</p>
-<h1 id="先模擬腿的部分"><a href="#先模擬腿的部分" class="headerlink" title="先模擬腿的部分"></a>先模擬腿的部分</h1><p>html 和 基本 css 的部分我就不佔篇幅描述，這邊只著重在跟動畫有端的部分。</p>
-<p>我們先來看一下在腿的動畫，我們預計要達到的效果：</p>
-<img src="/images/posts/dayscss11/02.gif" style="box-shadow: unset;">
+<p>這次的題目是要做一個動畫卡片，當 hover 時會垂直翻面到背面。</p>
+<p>動畫的部分除了之前常用的 css animation 語法，因為這次腳踏車的線和直升機背後的線，產生隨機的大量線段，因此在 html 的部分會用到 Slim 跑回圈產生大量線，在用 SASS 跑回圈讓每個線段產生不同的寬度位置等。</p>
+<p>翻面的效果則是會用到 <code>perspective</code> 這個 css 屬性來調整卡片的透視。</p>
+<h1 id="學習重點"><a href="#學習重點" class="headerlink" title="學習重點"></a>學習重點</h1><ol>
+<li>Slim 迴圈</li>
+<li>SASS 迴圈 和 random()</li>
+<li>perspective 透視</li>
+</ol>
+<h2 id="Slim-迴圈"><a href="#Slim-迴圈" class="headerlink" title="Slim 迴圈"></a>Slim 迴圈</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.street</span><br><span class="line">  - for i in (1..8)</span><br><span class="line">    div class&#x3D;&quot;line line-#&#123; i &#125;&quot;</span><br></pre></td></tr></table></figure>
 
-<p>很明顯的這是對腿部的地方加上旋轉的動畫，旋轉的軸心在腿部的上方，因此我們設定 <code>transform-origin: top</code> 調整旋轉的軸心：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.leg</span> &#123;</span><br><span class="line">  <span class="attribute">transform-origin</span>: top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這樣會轉換成 html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;street&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-5&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-6&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-7&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line line-8&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>接著我們要來設定腿部動畫的關鍵影格，<br>動畫的開頭和結尾都設定 <code>30deg</code> 的旋轉，中間 50%的地方設定 <code>-30deg</code>的旋轉，<br>右腳則是相反，50%的地方都設定 <code>30deg</code> 的旋轉，開頭和結尾的部分設定 <code>-30deg</code>的旋轉，程式碼如下：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> walk &#123;</span><br><span class="line">  0%,</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(<span class="number">30deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(-<span class="number">30deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> walk-r &#123;</span><br><span class="line">  0%,</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(-<span class="number">30deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(<span class="number">30deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SASS-迴圈-和-random"><a href="#SASS-迴圈-和-random" class="headerlink" title="SASS 迴圈 和 random()"></a>SASS 迴圈 和 random()</h2><p>接著要幫 line-1 ~ line-9 分別套上 css 樣式，所以在樣式的地方也同樣要跑回圈。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> through <span class="number">9</span> &#123;</span><br><span class="line">  <span class="selector-class">.line-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>並套上動畫：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: walk-r <span class="number">2s</span> ease-in-out infinite;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: walk <span class="number">2s</span> ease-in-out infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>會轉換成：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.line-1</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.line-2</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<h1 id="再模擬鞋子的部分"><a href="#再模擬鞋子的部分" class="headerlink" title="再模擬鞋子的部分"></a>再模擬鞋子的部分</h1><p>目前看起來只有腿在旋轉，非常的不自然因此我們再加上鞋子的動畫，讓他有踏地的感覺：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> walk-shoe &#123;</span><br><span class="line">  0%,</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(<span class="number">0deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  12<span class="selector-class">.5</span>% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(-<span class="number">15deg</span>) translate(<span class="number">0</span>, -<span class="number">5px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  25% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(-<span class="number">5deg</span>) translate(<span class="number">0</span>, -<span class="number">40px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(<span class="number">5deg</span>) translate(<span class="number">0</span>, -<span class="number">5px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  62<span class="selector-class">.5</span>% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(<span class="number">15deg</span>) translate(<span class="number">0</span>, <span class="number">5px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  75% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: rotate(<span class="number">0deg</span>) translate(<span class="number">0</span>, <span class="number">5px</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">  <span class="selector-class">.shoe</span> &#123;</span><br><span class="line">    <span class="attribute">animation</span>: walk-shoe <span class="number">2s</span> linear infinite;</span><br><span class="line">    <span class="attribute">animation-delay</span>: <span class="number">1s</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="selector-class">.shoe</span> &#123;</span><br><span class="line">    <span class="attribute">animation</span>: walk-shoe <span class="number">2s</span> linear infinite;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有一些隨機值，像是線段的寬度等可以使用 <code>random()</code> 來產生隨機的數值。</p>
+<p><code>random(100)</code> 會隨機產生 1~100 的數值，套用在 SASS 上：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> through <span class="number">9</span> &#123;</span><br><span class="line">  <span class="selector-class">.cloud-</span>#&#123;<span class="variable">$i</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">width</span>: (<span class="number">10</span> + random(<span class="number">70</span>) / <span class="number">4</span>) + px;</span><br><span class="line">    <span class="attribute">top</span>: (<span class="variable">$i</span> * <span class="number">14</span>) + px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="perspective-透視"><a href="#perspective-透視" class="headerlink" title="perspective 透視"></a>perspective 透視</h2><p>將卡片垂直翻轉到背面，要 180 度旋轉卡片的 X 軸：<code>transform: rotateX(180deg)</code>。</p>
+<p>但如果只是單純的旋轉 X 軸，沒有透視效果的話，看起來只會是卡片變扁再復原：</p>
+<img src="/images/posts/dayscss14/01.gif" style="box-shadow: unset;">
+
+<p>因此我們要在外層加上：<code>perspective</code>屬性，才會有透視感。</p>
+<p><code>perspective</code> 詳細的用法可以參考：<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective" >Perspective<i class="fas fa-external-link-alt"></i></a></p>
+<p>除此之外，為了讓翻到背面的圖案不顯示，要再加上 <code> backface-visibility: hidden;</code> 語法。</p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>這次的 CSS100 天挑戰的文章，直接跳過了中間幾個題目的筆記。原本希望是每做完一篇就寫一篇文章，當作是教學文章。</p>
+<p>但現在比較傾向改成我自己的學習筆記，所以只會在我有學到新東西且想做紀錄時，才會寫一篇文章，主要是新知識的紀錄，介紹得也不會像之前那麼詳盡。</p>
 
         </div>
 
@@ -257,33 +271,18 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/dayscss10-Watch/"
+                           href="/%E5%89%8D%E7%AB%AF/CSS/dayscss11-Walking-Boots/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 10 Watch</span>
+                                <span class="post-nav-title-item">[CSS100] Day 11 Walking Boots</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                         </a>
                     </div>
                 
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/%E5%89%8D%E7%AB%AF/CSS/dayscss14-Byciclopter/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">[CSS100] Day 14 Byciclopter</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
                 
             </div>
         
@@ -391,7 +390,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Walking-Boots-Demo"><span class="nav-number">1.</span> <span class="nav-text">Walking Boots Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%88%E6%A8%A1%E6%93%AC%E8%85%BF%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">先模擬腿的部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%8D%E6%A8%A1%E6%93%AC%E9%9E%8B%E5%AD%90%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">再模擬鞋子的部分</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Byciclopter-Demo"><span class="nav-number">1.</span> <span class="nav-text">Byciclopter Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E"><span class="nav-number">2.</span> <span class="nav-text">學習重點</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Slim-%E8%BF%B4%E5%9C%88"><span class="nav-number">2.1.</span> <span class="nav-text">Slim 迴圈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SASS-%E8%BF%B4%E5%9C%88-%E5%92%8C-random"><span class="nav-number">2.2.</span> <span class="nav-text">SASS 迴圈 和 random()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perspective-%E9%80%8F%E8%A6%96"><span class="nav-number">2.3.</span> <span class="nav-text">perspective 透視</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">3.</span> <span class="nav-text">心得</span></a></li></ol>
     </div>
 </div>
         </aside>
